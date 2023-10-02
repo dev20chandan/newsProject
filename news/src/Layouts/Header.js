@@ -1,0 +1,70 @@
+import React from 'react'
+
+export default function Header() {
+  return (
+   <>
+   <nav className="navbar navbar-expand-xl">
+        <div className="container-fluid">
+          <div
+            className="collapse navbar-collapse w-100"
+            id="navbarSupportedContent"
+          >
+            <div className="d-flex flex-lg-nowrap flex-wrap justify-content-between  w-100 align-items-end">
+              <div className="nav_search w-100">
+                <input
+                  type="text"
+                  className="form-control mb-lg-0 mb-4"
+                  placeholder="Search here"
+                />
+                <i className="fa-solid fa-magnifying-glass" />
+              </div>
+              <a href="" className="nt_box">
+                <i className="fa-regular fa-bell" />
+                <span className="num_cir">20</span>
+              </a>
+              <a href="" className="nt_box">
+                <i className="fa-regular fa-comment-dots" />
+                <span className="num_cir">15</span>
+              </a>
+             
+              <a
+                href=""
+                className="nt_box"
+                style={{ backgroundColor: "rgba(255, 91, 91, 0.15)" }}
+              >
+                <i className="fa-solid fa-gear" style={{ color: "#FF5B5B" }} />
+                <span
+                  className="num_cir"
+                  style={{ backgroundColor: "#FF5B5B" }}
+                >
+                  19
+                </span>
+              </a>
+            </div>
+          </div>
+          <i
+            className="fa-solid fa-angles-down p-2 nav_op collapsed d-xl-none"
+            style={{ cursor: "pointer" }}
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          />
+          <a href="" className="nav_user me-auto">
+            <h6>
+              Hello, <strong>Samantha</strong>
+            </h6>
+            <div className="nav_user_img">
+              <img src="./assets/images/user.png" alt="" />
+            </div>
+          </a>
+          <i
+            className="fa-solid fa-bars me-2 side_op_btn  d-xl-none"
+            onclick="sidNav()"
+          />
+        </div>
+      </nav>
+   </>
+  )
+}
