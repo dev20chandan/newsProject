@@ -27,6 +27,7 @@ module.exports = {
             if (!data) return res.json({ "msg": "this email Not exist Please signup first" })
             if(data.password != req.body.password) return res.json({ "msg": "Password do not match" })
             return res.json( {msg:"login success",data})
+            
         } catch (error) {
             console.log(error)
             return res.json(error.message)

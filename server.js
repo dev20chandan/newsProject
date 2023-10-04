@@ -14,6 +14,7 @@ app.use(bodyParser.json())
 app.use(i18nextMiddleware.handle(i18n));
 app.use(express.static(path.join(__dirname, 'build')));
 app.use("/", commonsrc);
+_ = require("lodash");
 
 connectDB()
   .then(() => {})
