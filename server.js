@@ -3,18 +3,16 @@ const path = require('path');
 var bodyParser = require('body-parser')
 const commonsrc = require('./backend/router/common');
 const { connectDB } = require('./backend/Models/db'); 
-const { i18n } = require('./i18n'); // Import the i18n configuration
-const i18nextMiddleware = require('i18next-http-middleware');
 
 const app = express();
 
+_ = require("lodash");
 app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
-app.use(i18nextMiddleware.handle(i18n));
 app.use(express.static(path.join(__dirname, 'build')));
 app.use("/", commonsrc);
-_ = require("lodash");
+
 
 connectDB()
   .then(() => {})
