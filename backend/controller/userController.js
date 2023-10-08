@@ -2,8 +2,10 @@ const User = require('../Models/user')
 module.exports = {
     getUser: async (req, res) => {
         try {
+            console.log('-dddddd')
             const data = await User.find()
-            res.json(data)
+            const welcomeMessage = res.__('welcomeMessage');
+            res.json({msg:welcomeMessage,data})
         } catch (error) {
             console.log(error, '==err')
         }

@@ -1,21 +1,21 @@
 // i18n.js
+const i18n = require('i18n');
+const path = require('path'); // Import the path module
 
-const i18next = require('i18next');
+// Configure i18n
+i18n.configure({
+  locales: ['en', 'hi'],
+  defaultLocale: 'en',
+  cookie: 'lang',
+  directory: path.join(__dirname, 'locales')
+});
 
-i18next
-  .init({
-    resources: {
-      en: {
-        translation: {
-          ...require('./backend/locals/en.json'),
-        },
-      },
-     
-      hi: {
-        translation: require('./backend/locals/hi.json'),
-      },
-    },
-    fallbackLng: 'en',
-  });
+// Define a function to translate text
+function translate(key) {
+  return i18n.__(key);
+}
 
-module.exports = i18next;
+module.exports = {
+  i18n,
+  translate,
+};
