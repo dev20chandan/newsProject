@@ -7,14 +7,14 @@ const app = express();
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-app.use(express.static(path.join(__dirname, 'build')));
+app.use(express.static(path.join(__dirname, 'news', 'build')));
+
 app.use(i18n.init);
 app.use((req, res, next) => {
-  const lang = req.headers.lang || 'en'; // Default to 'en' if 'lang' header is not present
-  req.setLocale(lang); // Set the locale based on the 'lang' header
+  const lang = req.headers.lang || 'en'; 
+  req.setLocale(lang); 
   next();
 });
-
 app.use("/", commonsrc);
 
 connectDB()
