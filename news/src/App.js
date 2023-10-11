@@ -2,12 +2,7 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Login from './Components/Login';
 import MainLayout from './Layouts/MainLayout';
-import Dashboard from './Components/Dashboard/Dashboard';
-import AddFeed from './Components/Dashboard/Add';
-
-import Add from "./Components/Users/Add";
-import UserList from "./Components/Users/UserList";
-
+import Router from './Router'
 
 function App() {
   return (
@@ -16,11 +11,11 @@ function App() {
         <Routes >
           <Route path='/' element={<Login />} />
           <Route path='/' element={<MainLayout />} >
-            <Route path='/Feed' element={<Dashboard />} />
-            <Route path='/Feed/add' element={<AddFeed />} />
-
-            <Route path='/userlist/Add' element={<Add />} />
-            <Route path='/userlist' element={<UserList />} />
+            {
+              Router.map(({path,element}, i) =>
+                <Route key={i} path={path} element={element} />
+              )
+            }
           </Route>
         </Routes>
       </BrowserRouter>

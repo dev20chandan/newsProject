@@ -66,17 +66,11 @@ export default function Sidebar() {
                       Are you sure you want to logout.
                     </strong>
                     <div className="d-flex justify-content-center align-items-center">
-                      <a
-                        href=""
-                        data-bs-dismiss="modal"
+                      <Link data-bs-dismiss="modal" 
                         aria-label="Close"
-                        className="out_btn"
-                      >
-                        No
-                      </a>{" "}
-                      <a href="index.html" className="out_btn">
-                        Yes
-                      </a>
+                        className="out_btn" >No</Link>
+
+                      <Link path="/" className="out_btn" >Yes</Link>
                     </div>
                   </div>
                 </div>
