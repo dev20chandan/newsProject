@@ -1,8 +1,14 @@
-const express = require('express');
-const path = require('path');
-const commonsrc = require('./backend/router/common');
-const { connectDB } = require('./backend/Models/db'); 
-const { i18n } = require('./i18n');
+import express from 'express';
+import path from 'path';
+import { connectDB } from './backend/Models/db.js';
+import { i18n } from './i18n.js';
+import commonsrc from './backend/router/common.js';
+import { fileURLToPath } from 'url';
+import { dirname } from 'path';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+
 const app = express();
 
 app.use(express.json());
@@ -11,8 +17,8 @@ app.use(express.static(path.join(__dirname, 'news', 'build')));
 
 app.use(i18n.init);
 app.use((req, res, next) => {
-  const lang = req.headers.lang || 'en'; 
-  req.setLocale(lang); 
+  const lang = req.headers.lang || 'en';
+  req.setLocale(lang);
   next();
 });
 app.use("/", commonsrc);
@@ -31,6 +37,6 @@ const port = process.env.PORT || 4000;
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
 });
-  
+
 
 // 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
