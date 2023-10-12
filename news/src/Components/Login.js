@@ -1,6 +1,16 @@
-import React from 'react'
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchUsers } from '../store/users/actions';
 
 export default function Login() {
+    const dispatch = useDispatch();
+    const { users, isLoading, error } = useSelector((state) => state.users);
+    console.log(isLoading,'==isloading')
+    console.log(users)
+  
+    useEffect(() => {
+      dispatch(fetchUsers());
+    }, [dispatch]);
 
     return (
         <section className="vh-100 login_page">

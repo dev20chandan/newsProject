@@ -7,22 +7,22 @@ const Router = [
     {
         path: "/Feed",
         element: <Dashboard />,
-        type: 'Feed'
+        permission: 'Feed',
     },
     {
         path: "/Feed/add",
         element: <AddFeed />,
-        type: 'add'
+        permission: 'listing',
     },
     {
         path: "/userlist",
         element: <UserList />,
-        type: 'userlist'
+        permission: 'userlisting',
     },
     {
         path: "/userlist/Add",
         element: <Add />,
-        type: 'userlist'
+        type: 'adduser'
     },
 
 

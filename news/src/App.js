@@ -5,6 +5,7 @@ import MainLayout from './Layouts/MainLayout';
 import Router from './Router'
 
 function App() {
+  const userPermissions =["Feed","listing","userlisting"]
   return (
     <>
       <BrowserRouter >
@@ -12,8 +13,16 @@ function App() {
           <Route path='/' element={<Login />} />
           <Route path='/' element={<MainLayout />} >
             {
-              Router.map(({path,element}, i) =>
+                
+              Router.map(({path,element,permission}, i) =>
+
+              userPermissions.includes(permission) ? (
                 <Route key={i} path={path} element={element} />
+              ) : (
+                <Route key={i} path={path} element={<>no permission</>} />
+              )
+
+                // <Route key={i} path={path} element={element} />
               )
             }
           </Route>
