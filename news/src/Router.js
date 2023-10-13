@@ -3,8 +3,16 @@ import AddFeed from './Components/Dashboard/Add';
 import Add from "./Components/Users/Add";
 import UserList from "./Components/Users/UserList";
 const routes = [
-  { path: 'Feed', element: <Dashboard />, children: ['add', 'edit', 'view'] },
-  { path: 'User', element: <UserList />, children: ['addAdd'] },
+  {
+    path: 'Feed',
+    element: <Dashboard />,
+    children: ['add', 'edit', 'view']
+  },
+  {
+    path: 'User',
+    element: <UserList />,
+    children: ['addAdd']
+  },
 ];
 
 
@@ -26,4 +34,4 @@ function getRouteComponent(child) {
 
 
 
-export  {routes,getRouteComponent}; // Export as the default export
+export { routes, getRouteComponent }; // Export as the default export
