@@ -1,7 +1,7 @@
 import React ,{useState} from 'react'
 import DeletePopup from '../../Comman/DeletePopup'
 import MyPagination from '../../Comman/MyPagination'
-import { Link } from 'react-router-dom';
+import { Link, Outlet } from 'react-router-dom';
 
 export default function Dashboard() {
     const [currentPage, setCurrentPage] = useState(1);
@@ -13,7 +13,10 @@ export default function Dashboard() {
       // Fetch or update data for the new page here
     };
     return (
+
         <>
+       
+
             <section className="wrapper pb-sm-5 pb-2">
                 <div className="container-fluid">
                     <div className="wrapper_header row align-items-center">

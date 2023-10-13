@@ -46,7 +46,7 @@ export default function UserList() {
                   </ul>
                 </div>
               </div>
-              <Link to='/userlist/Add' className="ico_box active " >
+              <Link to='/userlist/addAdd' className="ico_box active " >
                 {" "}
                 <i className="fa-solid fa-plus" />{" "}
               </Link>
