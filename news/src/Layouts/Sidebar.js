@@ -1,7 +1,10 @@
-import React from 'react'
-import { Link, NavLink } from 'react-router-dom'
-
+import React from 'react';
+import { Link, NavLink } from 'react-router-dom';
+import { routes } from '../Router';
 export default function Sidebar() {
+  const permission = ["User"]
+  const role ="admin"
+
   return (
     <>
       <div className="sidebar_wrapper" id="sideOpen">
@@ -12,20 +15,24 @@ export default function Sidebar() {
         <i className="fa-solid fa-xmark close d-xl-none" onclick="sidNav()" />
         <h3 className="side_sub_headign">Modern Admin Dashboard</h3>
         <ul className="sidenav_list">
-          <li className="sidenav_item">
-            <NavLink to='/Feed' className="sidenav_link  " > <i className="fa-solid fa-rss" />
-              <span>Feed</span></NavLink>
-          </li>
-          <li className="sidenav_item">
-            <NavLink to={'/User'} className="sidenav_link  " >  <i className="fa-solid fa-user-group" />{" "}
-              <span>User Listing</span> </NavLink>
-          </li>
-          <li className="sidenav_item">
-            <NavLink to={'/'} className="sidenav_link  " >  <i className="fa-solid fa-gift" />
-              <span>Coupons</span></NavLink>
-          </li>
-          <li className="sidenav_item">
 
+          {routes.map((route, index) => (
+            <li className="sidenav_item" key={index}>
+              {
+                role =="admin"? 
+                <NavLink to={`/${route.path}`} className="sidenav_link">
+                <i className={`fa-solid ${route.icons}`} />
+                <span>{route.path}</span>
+              </NavLink>
+                :
+                permission.includes(route.path) ? <NavLink to={`/${route.path}`} className="sidenav_link">
+                <i className={`fa-solid ${route.icons}`} />
+                <span>{route.path}</span>
+              </NavLink>:""
+              }
+            </li>
+          ))}
+          <li className="sidenav_item">
             <Link
               data-bs-toggle="modal"
               data-bs-target="#logout"
@@ -66,7 +73,7 @@ export default function Sidebar() {
                       Are you sure you want to logout.
                     </strong>
                     <div className="d-flex justify-content-center align-items-center">
-                      <Link data-bs-dismiss="modal" 
+                      <Link data-bs-dismiss="modal"
                         aria-label="Close"
                         className="out_btn" >No</Link>
 

@@ -5,14 +5,16 @@ import UserList from "./Components/Users/UserList";
 const routes = [
   {
     path: 'Feed',
+    icons:"fa-rss",
     element: <Dashboard />,
     children: ['add', 'edit', 'view']
   },
   {
     path: 'User',
+    icons:"fa-user-group",
     element: <UserList />,
     children: ['addAdd']
-  },
+  },  
 ];
 
 
