@@ -1,33 +1,29 @@
-import Dashboard from "./Components/Dashboard/Dashboard";
+import Dashboard from './Components/Dashboard/Dashboard';
 import AddFeed from './Components/Dashboard/Add';
 import Add from "./Components/Users/Add";
 import UserList from "./Components/Users/UserList";
-
-const Router = [
-    {
-        path: "/Feed",
-        element: <Dashboard />,
-        permission: 'Feed',
-    },
-    {
-        path: "/Feed/add",
-        element: <AddFeed />,
-        permission: 'listing',
-    },
-    {
-        path: "/userlist",
-        element: <UserList />,
-        permission: 'userlisting',
-    },
-    {
-        path: "/userlist/Add",
-        element: <Add />,
-        type: 'adduser'
-    },
+const routes = [
+  { path: 'Feed', element: <Dashboard />, children: ['add', 'edit', 'view'] },
+  { path: 'userlist', element: <UserList />, children: ['addAdd'] },
+];
 
 
-]
+function getRouteComponent(child) {
+  // Define a function to return the appropriate component based on the child route
+  switch (child) {
+    case 'add':
+      return <AddFeed />;
+    case 'edit':
+      return <AddFeed />;
+    case 'view':
+      return <AddFeed />;
+    case 'addAdd':
+      return <Add />;
+    default:
+      return null;
+  }
+}
 
 
 
-export default Router; // Export as the default export
+export  {routes,getRouteComponent}; // Export as the default export
