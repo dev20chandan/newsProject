@@ -17,7 +17,7 @@ export default function Sidebar() {
               <span>Feed</span></NavLink>
           </li>
           <li className="sidenav_item">
-            <NavLink to={'/userlist'} className="sidenav_link  " >  <i className="fa-solid fa-user-group" />{" "}
+            <NavLink to={'/User'} className="sidenav_link  " >  <i className="fa-solid fa-user-group" />{" "}
               <span>User Listing</span> </NavLink>
           </li>
           <li className="sidenav_item">

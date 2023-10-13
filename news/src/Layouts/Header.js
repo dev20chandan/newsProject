@@ -56,7 +56,7 @@ export default function Header() {
               Hello, <strong>Samantha</strong>
             </h6>
             <div className="nav_user_img">
-              <img src="./assets/images/user.png" alt="" />
+              <img src="/assets/images/user.png" alt="" />
             </div>
           </a>
           <i
