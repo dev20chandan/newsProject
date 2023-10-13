@@ -2,7 +2,7 @@ import React from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import { routes } from '../Router';
 export default function Sidebar() {
-  const permission = ["User"]
+  const permission = ['Feed','User']
   const role ="admin"
 
   return (
@@ -15,19 +15,18 @@ export default function Sidebar() {
         <i className="fa-solid fa-xmark close d-xl-none" onclick="sidNav()" />
         <h3 className="side_sub_headign">Modern Admin Dashboard</h3>
         <ul className="sidenav_list">
-
           {routes.map((route, index) => (
             <li className="sidenav_item" key={index}>
               {
                 role =="admin"? 
                 <NavLink to={`/${route.path}`} className="sidenav_link">
                 <i className={`fa-solid ${route.icons}`} />
-                <span>{route.path}</span>
+                <span>{route.title}</span>
               </NavLink>
                 :
                 permission.includes(route.path) ? <NavLink to={`/${route.path}`} className="sidenav_link">
                 <i className={`fa-solid ${route.icons}`} />
-                <span>{route.path}</span>
+                <span>{route.title}</span>
               </NavLink>:""
               }
             </li>

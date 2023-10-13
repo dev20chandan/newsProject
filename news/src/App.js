@@ -4,7 +4,7 @@ import MainLayout from './Layouts/MainLayout';
 import Dashboard from './Components/Dashboard/Dashboard';
 import { routes, getRouteComponent } from './Router';
 function App() {
-  const permission = ["User"]
+  const permission = ['Feed','User']
   const role ="admin"
   return (
     <BrowserRouter>

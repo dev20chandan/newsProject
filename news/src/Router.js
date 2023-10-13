@@ -4,17 +4,27 @@ import Add from "./Components/Users/Add";
 import UserList from "./Components/Users/UserList";
 const routes = [
   {
-    path: 'Feed',
+    title:"Feeds",
     icons:"fa-rss",
+    path: 'Feed',
     element: <Dashboard />,
     children: ['add', 'edit', 'view']
   },
   {
-    path: 'User',
+    title:"Users",
     icons:"fa-user-group",
+    path: 'User',
     element: <UserList />,
     children: ['addAdd']
-  },  
+  }, 
+  {
+    title:"Manage User",
+    icons:"fa-user-group",
+    path: 'ManageUser',
+    element: <UserList />,
+    children: ['']
+  },   
+  
 ];
 
 
