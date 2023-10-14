@@ -5,6 +5,7 @@ import { i18n } from './i18n.js';
 import commonsrc from './backend/router/common.js';
 import { fileURLToPath } from 'url';
 import { dirname } from 'path';
+import cors from 'cors';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -13,6 +14,7 @@ const app = express();
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
+app.use(cors());
 app.use(express.static(path.join(__dirname, 'news', 'build')));
 
 app.use(i18n.init);

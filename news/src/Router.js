@@ -22,7 +22,7 @@ const routes = [
     icons:"fa-user-group",
     path: 'ManageUser',
     element: <UserList />,
-    children: ['']
+    children: []
   },   
   
 ];

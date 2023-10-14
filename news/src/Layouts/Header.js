@@ -18,17 +18,17 @@ export default function Header() {
                 />
                 <i className="fa-solid fa-magnifying-glass" />
               </div>
-              <a href="" className="nt_box">
+              <a   href="javascript:void(0)" className="nt_box">
                 <i className="fa-regular fa-bell" />
                 <span className="num_cir">20</span>
               </a>
-              <a href="" className="nt_box">
+              <a   href="javascript:void(0)" className="nt_box">
                 <i className="fa-regular fa-comment-dots" />
                 <span className="num_cir">15</span>
               </a>
              
               <a
-                href=""
+                  href="javascript:void(0)"
                 className="nt_box"
                 style={{ backgroundColor: "rgba(255, 91, 91, 0.15)" }}
               >
@@ -51,7 +51,7 @@ export default function Header() {
             aria-expanded="false"
             aria-label="Toggle navigation"
           />
-          <a href="" className="nav_user me-auto">
+          <a   href="javascript:void(0)" className="nav_user me-auto">
             <h6>
               Hello, <strong>Samantha</strong>
             </h6>

@@ -1,13 +1,14 @@
 import User from '../Models/user.js';
+import { errorResponse, successResponse } from '../helper/helper.js';
 
 export const getUser = async (req, res) => {
   try {
     console.log('-dddddd');
     const data = await User.find();
-    const welcomeMessage = res.__('welcomeMessage');
-    res.json({ msg: welcomeMessage, data });
+    successResponse(res,"welcomeMessage",data)
   } catch (error) {
     console.log(error, '==err');
+    errorResponse((res,"error",error.message))
   }
 };
 
@@ -16,10 +17,13 @@ export const createUser = async (req, res) => {
     const data = await User.findOne({ email: req.body.email });
     if (data) return res.json({ msg: 'This email already exists' });
     const userCreate = await User.create(req.body);
-    return res.json(userCreate);
+    // return res.json(userCreate);
+    successResponse(res,"success",userCreate)
+
   } catch (error) {
     console.log(error);
-    return res.json(error.message);
+    errorResponse((res,"error",error.message))
+
   }
 };
 

@@ -17,7 +17,7 @@ function MyPagination({ totalItems, itemsPerPage, onPageChange }) {
         <li className={`page-item ${currentPage === 1 ? 'disabled' : ''}`}>
           <a
             className="page-link"
-            href="#"
+            href="javascript:void(0)"
             aria-label="Previous"
             onClick={() => handlePageChange(currentPage - 1)}
           >
@@ -31,7 +31,7 @@ function MyPagination({ totalItems, itemsPerPage, onPageChange }) {
           >
             <a
               className={`page-link ${currentPage === index + 1 ? 'active-link' : ''}`}
-              href="#"
+              href="javascript:void(0)"
               onClick={() => handlePageChange(index + 1)}
             >
               {index + 1}
@@ -41,7 +41,7 @@ function MyPagination({ totalItems, itemsPerPage, onPageChange }) {
         <li className={`page-item ${currentPage === totalPages ? 'disabled' : ''}`}>
           <a
             className="page-link"
-            href="#"
+            href="javascript:void(0)"
             aria-label="Next"
             onClick={() => handlePageChange(currentPage + 1)}
           >

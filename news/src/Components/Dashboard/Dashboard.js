@@ -67,7 +67,7 @@ export default function Dashboard() {
                                     <div className="card_icos">
                                         <a
                                             className="text-decoration-none"
-                                            href="view-promotion.html"
+                                            href="javascript:void(0)"
                                         >
                                             <div className="ico_s">
                                                 {" "}
@@ -77,7 +77,7 @@ export default function Dashboard() {
                                         </a>
                                         <a
                                             className="text-decoration-none"
-                                            href="edit-promotion.html"
+                                            href="javascript:void(0)"
                                         >
                                             <div className="ico_s red">
                                                 {" "}
@@ -120,11 +120,11 @@ export default function Dashboard() {
                               <h3 class="card_name">Spicy Mozarella with Barbeque</h3>
                               <p class='food_name'><span>Food /</span> Noodle</p>
                               <div class="card_icos">
-                                  <a class="text-decoration-none" href="view-promotion.html">
+                                  <a class="text-decoration-none" href="javascript:void(0)">
                                       <div class="ico_s"> <i class="fa-regular fa-eye"></i> </div>
                                       <span>View</span>
                                   </a>
-                                  <a class="text-decoration-none" href="edit-promotion.html">
+                                  <a class="text-decoration-none" href="javascript:void(0)">
                                       <div class="ico_s red"> <i class="fa-regular fa-pen-to-square"></i> </div>
                                       <span>Edit</span>
                                   </a>
@@ -151,11 +151,11 @@ export default function Dashboard() {
                               <h3 class="card_name">Spicy Mozarella with Barbeque</h3>
                               <p class='food_name'><span>Food /</span> Noodle</p>
                               <div class="card_icos">
-                                  <a class="text-decoration-none" href="view-promotion.html">
+                                  <a class="text-decoration-none" href="javascript:void(0)">
                                       <div class="ico_s"> <i class="fa-regular fa-eye"></i> </div>
                                       <span>View</span>
                                   </a>
-                                  <a class="text-decoration-none" href="edit-promotion.html">
+                                  <a class="text-decoration-none" href="javascript:void(0)">
                                       <div class="ico_s red"> <i class="fa-regular fa-pen-to-square"></i> </div>
                                       <span>Edit</span>
                                   </a>
@@ -182,11 +182,11 @@ export default function Dashboard() {
                               <h3 class="card_name">Spicy Mozarella with Barbeque</h3>
                               <p class='food_name'><span>Food /</span> Noodle</p>
                               <div class="card_icos">
-                                  <a class="text-decoration-none" href="view-promotion.html">
+                                  <a class="text-decoration-none" href="javascript:void(0)">
                                       <div class="ico_s"> <i class="fa-regular fa-eye"></i> </div>
                                       <span>View</span>
                                   </a>
-                                  <a class="text-decoration-none" href="edit-promotion.html">
+                                  <a class="text-decoration-none" href="javascript:void(0)">
                                       <div class="ico_s red"> <i class="fa-regular fa-pen-to-square"></i> </div>
                                       <span>Edit</span>
                                   </a>
@@ -213,11 +213,11 @@ export default function Dashboard() {
                               <h3 class="card_name">Spicy Mozarella with Barbeque</h3>
                               <p class='food_name'><span>Food /</span> Noodle</p>
                               <div class="card_icos">
-                                  <a class="text-decoration-none" href="view-promotion.html">
+                                  <a class="text-decoration-none" href="javascript:void(0)">
                                       <div class="ico_s"> <i class="fa-regular fa-eye"></i> </div>
                                       <span>View</span>
                                   </a>
-                                  <a class="text-decoration-none" href="edit-promotion.html">
+                                  <a class="text-decoration-none" href="javascript:void(0)">
                                       <div class="ico_s red"> <i class="fa-regular fa-pen-to-square"></i> </div>
                                       <span>Edit</span>
                                   </a>
@@ -244,11 +244,11 @@ export default function Dashboard() {
                               <h3 class="card_name">Spicy Mozarella with Barbeque</h3>
                               <p class='food_name'><span>Food /</span> Noodle</p>
                               <div class="card_icos">
-                                  <a class="text-decoration-none" href="view-promotion.html">
+                                  <a class="text-decoration-none" href="javascript:void(0)" >
                                       <div class="ico_s"> <i class="fa-regular fa-eye"></i> </div>
                                       <span>View</span>
                                   </a>
-                                  <a class="text-decoration-none" href="edit-promotion.html">
+                                  <a class="text-decoration-none" href="javascript:void(0)"  >
                                       <div class="ico_s red"> <i class="fa-regular fa-pen-to-square"></i> </div>
                                       <span>Edit</span>
                                   </a>
@@ -275,11 +275,11 @@ export default function Dashboard() {
                               <h3 class="card_name">Spicy Mozarella with Barbeque</h3>
                               <p class='food_name'><span>Food /</span> Noodle</p>
                               <div class="card_icos">
-                                  <a class="text-decoration-none" href="view-promotion.html">
+                                  <a class="text-decoration-none" href="javascript:void(0)" >
                                       <div class="ico_s"> <i class="fa-regular fa-eye"></i> </div>
                                       <span>View</span>
                                   </a>
-                                  <a class="text-decoration-none" href="edit-promotion.html">
+                                  <a class="text-decoration-none" href="javascript:void(0)"  >
                                       <div class="ico_s red"> <i class="fa-regular fa-pen-to-square"></i> </div>
                                       <span>Edit</span>
                                   </a>
@@ -306,11 +306,11 @@ export default function Dashboard() {
                               <h3 class="card_name">Spicy Mozarella with Barbeque</h3>
                               <p class='food_name'><span>Food /</span> Noodle</p>
                               <div class="card_icos">
-                                  <a class="text-decoration-none" href="view-promotion.html">
+                                  <a class="text-decoration-none" href="javascript:void(0)" >
                                       <div class="ico_s"> <i class="fa-regular fa-eye"></i> </div>
                                       <span>View</span>
                                   </a>
-                                  <a class="text-decoration-none" href="edit-promotion.html">
+                                  <a class="text-decoration-none" href="javascript:void(0)"  >
                                       <div class="ico_s red"> <i class="fa-regular fa-pen-to-square"></i> </div>
                                       <span>Edit</span>
                                   </a>
@@ -337,11 +337,11 @@ export default function Dashboard() {
                               <h3 class="card_name">Spicy Mozarella with Barbeque</h3>
                               <p class='food_name'><span>Food /</span> Noodle</p>
                               <div class="card_icos">
-                                  <a class="text-decoration-none" href="view-promotion.html">
+                                  <a class="text-decoration-none" href="javascript:void(0)" >
                                       <div class="ico_s"> <i class="fa-regular fa-eye"></i> </div>
                                       <span>View</span>
                                   </a>
-                                  <a class="text-decoration-none" href="edit-promotion.html">
+                                  <a class="text-decoration-none" href="javascript:void(0)"  >
                                       <div class="ico_s red"> <i class="fa-regular fa-pen-to-square"></i> </div>
                                       <span>Edit</span>
                                   </a>
@@ -368,11 +368,11 @@ export default function Dashboard() {
                               <h3 class="card_name">Spicy Mozarella with Barbeque</h3>
                               <p class='food_name'><span>Food /</span> Noodle</p>
                               <div class="card_icos">
-                                  <a class="text-decoration-none" href="view-promotion.html">
+                                  <a class="text-decoration-none" href="javascript:void(0)" >
                                       <div class="ico_s"> <i class="fa-regular fa-eye"></i> </div>
                                       <span>View</span>
                                   </a>
-                                  <a class="text-decoration-none" href="edit-promotion.html">
+                                  <a class="text-decoration-none" href="javascript:void(0)"  >
                                       <div class="ico_s red"> <i class="fa-regular fa-pen-to-square"></i> </div>
                                       <span>Edit</span>
                                   </a>

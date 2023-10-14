@@ -1,6 +1,8 @@
 {
     "welcomeMessage": "Welcome to our website!",
     "aboutUs": "About Us",
+    "createSuccess":"User Create successfully",
+    "success":"Data get successfully",
     "contactUs": "Contact Us",
     "home": "Home",
     "services": "Services",

@@ -9,7 +9,7 @@ export default function Add() {
         <div>
           <h2 className="comp_heading">Add Feed Detail</h2>
           <span className="back_route">
-            <a href="coupons.html">Feed /</a>Add Feed Detail
+            <a href="javascript:void(0)">Feed /</a>Add Feed Detail
           </span>
         </div>
       </div>

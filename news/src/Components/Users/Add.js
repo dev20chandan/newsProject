@@ -8,7 +8,7 @@ export default function Add() {
                     <div>
                         <h2 className="comp_heading">Add Details</h2>
                         <span className="back_route">
-                            <a href="advertising-management.html">Advertising Management /</a>Add
+                            <a href="javascript:void(0)">Advertising Management /</a>Add
                             Promotion
                         </span>
                     </div>

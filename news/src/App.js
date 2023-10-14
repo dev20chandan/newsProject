@@ -5,14 +5,14 @@ import Dashboard from './Components/Dashboard/Dashboard';
 import { routes, getRouteComponent } from './Router';
 function App() {
   const permission = ['Feed','User']
-  const role ="admin"
+  const role ="subadmin"
   return (
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Login />} />
         <Route path="/" element={<MainLayout />}>
           {routes.map((route) => (
-            role =="admin"? <Route key={route.path} path={route.path} element={<Outlet />}>
+            role ==="admin"? <Route key={route.path} path={route.path} element={<Outlet />}>
             <Route index element={route.element} />
             {route.children.map((child) => (
               <Route key={child} path={child} element={getRouteComponent(child)} />

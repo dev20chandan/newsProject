@@ -120,7 +120,7 @@ export default function UserList() {
                   <td data-label="Location">290 Orchard Rd</td>
                   {/* <td data-label="Total Spent">$0.00</td> */}
                   <td data-label="Membership">
-                    <a href="#" className="t_btn acc">
+                    <a   href="javascript:void(0)" className="t_btn acc">
                       Approved
                     </a>
                     <div className="btn-group t_dropdown">
@@ -165,7 +165,7 @@ export default function UserList() {
                   <td data-label="Location">290 Orchard Rd</td>
                   {/* <td data-label="Total Spent">$0.00</td> */}
                   <td data-label="Membership">
-                    <a href="#" className="t_btn">
+                    <a   href="javascript:void(0)" className="t_btn">
                       Rejected
                     </a>
                     <div className="btn-group t_dropdown">
@@ -210,7 +210,7 @@ export default function UserList() {
                   <td data-label="Location">290 Orchard Rd</td>
                   {/* <td data-label="Total Spent">$0.00</td> */}
                   <td data-label="Membership">
-                    <a href="#" className="t_btn acc">
+                    <a   href="javascript:void(0)" className="t_btn acc">
                       Approved
                     </a>
                     <div className="btn-group t_dropdown">
@@ -255,7 +255,7 @@ export default function UserList() {
                   <td data-label="Location">290 Orchard Rd</td>
                   {/* <td data-label="Total Spent">$0.00</td> */}
                   <td data-label="Membership">
-                    <a href="#" className="t_btn">
+                    <a   href="javascript:void(0)" className="t_btn">
                       Rejected
                     </a>
                     <div className="btn-group t_dropdown">
@@ -300,7 +300,7 @@ export default function UserList() {
                   <td data-label="Location">290 Orchard Rd</td>
                   {/* <td data-label="Total Spent">$0.00</td> */}
                   <td data-label="Membership">
-                    <a href="#" className="t_btn">
+                    <a   href="javascript:void(0)" className="t_btn">
                       Rejected
                     </a>
                     <div className="btn-group t_dropdown">
@@ -345,7 +345,7 @@ export default function UserList() {
                   <td data-label="Location">290 Orchard Rd</td>
                   {/* <td data-label="Total Spent">$0.00</td> */}
                   <td data-label="Membership">
-                    <a href="#" className="t_btn acc">
+                    <a   href="javascript:void(0)" className="t_btn acc">
                       Approved
                     </a>
                     <div className="btn-group t_dropdown">
@@ -390,7 +390,7 @@ export default function UserList() {
                   <td data-label="Location">290 Orchard Rd</td>
                   {/* <td data-label="Total Spent">$0.00</td> */}
                   <td data-label="Membership">
-                    <a href="#" className="t_btn">
+                    <a   href="javascript:void(0)" className="t_btn">
                       Rejected
                     </a>
                     <div className="btn-group t_dropdown">
@@ -435,7 +435,7 @@ export default function UserList() {
                   <td data-label="Location">290 Orchard Rd</td>
                   {/* <td data-label="Total Spent">$0.00</td> */}
                   <td data-label="Membership">
-                    <a href="#" className="t_btn">
+                    <a   href="javascript:void(0)" className="t_btn">
                       Rejected
                     </a>
                     <div className="btn-group t_dropdown">
@@ -480,7 +480,7 @@ export default function UserList() {
                   <td data-label="Location">290 Orchard Rd</td>
                   {/* <td data-label="Total Spent">$0.00</td> */}
                   <td data-label="Membership">
-                    <a href="#" className="t_btn acc">
+                    <a   href="javascript:void(0)" className="t_btn acc">
                       Approved
                     </a>
                     <div className="btn-group t_dropdown">
@@ -525,7 +525,7 @@ export default function UserList() {
                   <td data-label="Location">290 Orchard Rd</td>
                   {/* <td data-label="Total Spent">$0.00</td> */}
                   <td data-label="Membership">
-                    <a href="#" className="t_btn">
+                    <a   href="javascript:void(0)" className="t_btn">
                       Rejected
                     </a>
                     <div className="btn-group t_dropdown">
@@ -570,7 +570,7 @@ export default function UserList() {
                   <td data-label="Location">290 Orchard Rd</td>
                   {/* <td data-label="Total Spent">$0.00</td> */}
                   <td data-label="Membership">
-                    <a href="#" className="t_btn">
+                    <a   href="javascript:void(0)" className="t_btn">
                       Rejected
                     </a>
                     <div className="btn-group t_dropdown">
@@ -619,29 +619,29 @@ export default function UserList() {
                   <nav aria-label="Page navigation example">
                     <ul className="pagination ms-auto me-md-0 me-auto">
                       <li className="page-item">
-                        <a className="page-link" href="#" aria-label="Previous">
+                        <a className="page-link"   href="javascript:void(0)" aria-label="Previous">
                           <span aria-hidden="true">
                             <i className="fa-solid fa-angles-left" />
                           </span>
                         </a>
                       </li>
                       <li className="page-item">
-                        <a className="page-link active" href="#">
+                        <a className="page-link active"   href="javascript:void(0)">
                           1
                         </a>
                       </li>
                       <li className="page-item">
-                        <a className="page-link" href="#">
+                        <a className="page-link"   href="javascript:void(0)">
                           2
                         </a>
                       </li>
                       <li className="page-item">
-                        <a className="page-link" href="#">
+                        <a className="page-link"   href="javascript:void(0)">
                           3
                         </a>
                       </li>
                       <li className="page-item">
-                        <a className="page-link" href="#" aria-label="Next">
+                        <a className="page-link"   href="javascript:void(0)" aria-label="Next">
                           <span aria-hidden="true">
                             <i className="fa-solid fa-angles-right" />
                           </span>
