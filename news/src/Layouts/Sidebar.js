@@ -76,7 +76,7 @@ export default function Sidebar() {
                         aria-label="Close"
                         className="out_btn" >No</Link>
 
-                      <Link path="/" className="out_btn" >Yes</Link>
+                      <Link to={'/'} className="out_btn" aria-hidden="true" >Yes</Link>
                     </div>
                   </div>
                 </div>

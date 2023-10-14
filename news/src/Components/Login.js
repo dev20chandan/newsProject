@@ -1,18 +1,53 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchUsers } from '../store/users/actions';
+import * as yup from 'yup';
+import { validateForm } from '../Comman/helper';
+import { useNavigate } from 'react-router-dom';
+
+
+
+// const dispatch = useDispatch();
+    // const { users, isLoading, error } = useSelector((state) => state.users);
+    // // console.log(isLoading,'==isloading')
+    // console.log(users)
+
+    // useEffect(() => {
+    //   dispatch(fetchUsers());
+    // }, [dispatch]);
+
+
+
 
 export default function Login() {
-    const dispatch = useDispatch();
-    const { users, isLoading, error } = useSelector((state) => state.users);
-    // console.log(isLoading,'==isloading')
-    console.log(users)
-  
-    useEffect(() => {
-      dispatch(fetchUsers());
-    }, [dispatch]);
+    const navigat = useNavigate()
+    const [formData, setFormData] = useState()
+    const [errors, setErrors] = useState([]);
+    const schema = yup.object().shape({
+        email: yup.string().email('Invalid email').required('Email is required'),
+        password: yup.string().min(4, 'Password must be at least 4 characters long').required('Password is required'),
+    });
 
-   
+    const handleChange = (e) => {
+        const { name, value } = e.target
+        setFormData({ ...formData, [name]: value })
+        setErrors((pro)=>({...pro,[name]:""}))
+    }
+
+    const HandleSubmit = async (e) => {
+        e.preventDefault();
+        const validationResult = await validateForm(formData, schema);
+        if (validationResult.isValid) {
+            // Form is valid, proceed with submission
+            console.log('Form is valid. Submitting...');
+            navigat('/feed')
+            setErrors({});
+        } else {
+            setErrors(validationResult.errors);
+        }
+    }
+
+
     return (
         <section className="vh-100 login_page">
             <div className="container py-3 h-100">
@@ -48,11 +83,11 @@ export default function Login() {
                                                 </label>
                                                 <input
                                                     type="email"
-                                                    id="form2Example17"
-                                                    onkeyup="emailData()"
-                                                    defaultValue=""
+                                                    name='email'
                                                     className="form-control form-control-lg"
+                                                    onChange={handleChange}
                                                 />
+                                                {errors.email && <span className="error-message ">{errors.email}</span>}
                                             </div>
                                             <div className="form-outline mb-3">
                                                 <label className="form-label" htmlFor="form2Example27">
@@ -60,21 +95,22 @@ export default function Login() {
                                                 </label>
                                                 <input
                                                     type="password"
-                                                    id="form2Example27"
-                                                    onkeyup="passwodData()"
-                                                    defaultValue=""
+                                                    name='password'
+                                                    onChange={handleChange}
                                                     className="form-control form-control-lg"
                                                 />
+                                                {errors.password && <span className="error-message" >{errors.password}</span>}
+
                                             </div>
                                             <div className="pt-1 mb-3 w-100">
                                                 <a
-                                               
+
                                                     className="btn btn-dark w-100"
                                                     style={{
                                                         backgroundColor: "var(--theme)",
                                                         borderColor: "var(--theme)"
                                                     }}
-                                                    onclick="submitData()"
+                                                    onClick={HandleSubmit}
                                                 >
                                                     {" "}
                                                     Login
@@ -86,10 +122,10 @@ export default function Login() {
                                             {/* <a class="small text-muted text-decoration-none" href="forgot.html">Forgot password?</a>
               <p class="mb-3 pb-lg-2" style="color: #393f81;">Don't have an account? <a
                   class="text-decoration-none" href="register.html" style="color: #393f81;">Register here</a></p> */}
-                                            <a href="javascript:void(0)"className="small text-muted">
+                                            <a href="javascript:void(0)" className="small text-muted">
                                                 Terms of use.
                                             </a>
-                                            <a href="javascript:void(0)"className="small text-muted">
+                                            <a href="javascript:void(0)" className="small text-muted">
                                                 Privacy policy
                                             </a>
                                         </form>
