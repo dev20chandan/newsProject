@@ -15,6 +15,8 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cors());
+
+// Serve static files from the 'news/build' directory
 app.use(express.static(path.join(__dirname, 'news', 'build')));
 
 app.use(i18n.init);
@@ -26,19 +28,18 @@ app.use((req, res, next) => {
 app.use("/", commonsrc);
 
 connectDB()
-  .then(() => {})
+  .then(() => {
+    // This code is executed once the database is connected.
+    const port = process.env.PORT || 4000;
+    app.listen(port, () => {
+      console.log(`Server is running on port ${port}`);
+    });
+  })
   .catch((err) => {
     console.error('Error connecting to the database:', err);
   });
 
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'build', 'index.html'));
+// Add a route that handles client-side routing for React
+app.get('/*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'news', 'build', 'index.html'));
 });
-
-const port = process.env.PORT || 4000;
-app.listen(port, () => {
-  console.log(`Server is running on port ${port}`);
-});
-
-
-// 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
