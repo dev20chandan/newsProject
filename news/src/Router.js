@@ -2,6 +2,7 @@ import Dashboard from './Components/Dashboard/Dashboard';
 import AddFeed from './Components/Dashboard/Add';
 import Add from "./Components/Users/Add";
 import UserList from "./Components/Users/UserList";
+import ManageUserList from './Components/UserMangement/Listing'
 const routes = [
   {
     title:"Feeds",
@@ -21,7 +22,7 @@ const routes = [
     title:"Manage User",
     icons:"fa-user-group",
     path: 'ManageUser',
-    element: <UserList />,
+    element: <ManageUserList />,
     children: []
   },   
   
