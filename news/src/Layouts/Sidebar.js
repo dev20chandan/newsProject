@@ -18,7 +18,7 @@ export default function Sidebar() {
           {routes.map((route, index) => (
             <li className="sidenav_item" key={index}>
               {
-                role ==="admin"? 
+              route.sidebar?  role ==="admin"? 
                 <NavLink to={`/${route.path}`} className="sidenav_link">
                 <i className={`fa-solid ${route.icons}`} />
                 <span>{route.title}</span>
@@ -27,7 +27,7 @@ export default function Sidebar() {
                 permission.includes(route.path) ? <NavLink to={`/${route.path}`} className="sidenav_link">
                 <i className={`fa-solid ${route.icons}`} />
                 <span>{route.title}</span>
-              </NavLink>:""
+              </NavLink>:"" :""
               }
             </li>
           ))}

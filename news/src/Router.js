@@ -9,21 +9,24 @@ const routes = [
     icons:"fa-rss",
     path: 'Feed',
     element: <Dashboard />,
-    children: ['add', 'edit', 'view']
+    children: ['add', 'edit', 'view'],
+    sidebar:true
   },
   {
     title:"Users",
     icons:"fa-user-group",
     path: 'User',
     element: <UserList />,
-    children: ['addAdd']
+    children: ['addAdd'],
+    sidebar:true
   }, 
   {
     title:"Manage User",
     icons:"fa-user-group",
     path: 'ManageUser',
     element: <ManageUserList />,
-    children: []
+    children: [],
+    sidebar:true
   },   
   
 ];

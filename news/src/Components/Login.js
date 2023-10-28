@@ -5,20 +5,6 @@ import * as yup from 'yup';
 import { validateForm } from '../Comman/helper';
 import { useNavigate } from 'react-router-dom';
 
-
-
-// const dispatch = useDispatch();
-    // const { users, isLoading, error } = useSelector((state) => state.users);
-    // // console.log(isLoading,'==isloading')
-    // console.log(users)
-
-    // useEffect(() => {
-    //   dispatch(fetchUsers());
-    // }, [dispatch]);
-
-
-
-
 export default function Login() {
     const navigat = useNavigate()
     const [formData, setFormData] = useState()
