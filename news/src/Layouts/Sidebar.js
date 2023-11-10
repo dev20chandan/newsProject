@@ -2,8 +2,8 @@ import React from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import { routes } from '../Router';
 export default function Sidebar() {
-  const permission = ['Feed','User']
-  const role ="subadmin"
+  const permission = ['Feed', 'User']
+  const role = "subadmin"
 
   return (
     <>
@@ -19,16 +19,16 @@ export default function Sidebar() {
 
             <li className="sidenav_item" key={index}>
               {
-               route.sidebar ? role ==="admin"? 
-                <NavLink to={`/${route.path}`} className="sidenav_link">
-                <i className={`fa-solid ${route.icons}`} />
-                <span>{route.title}</span>
-              </NavLink>
-                :
-                permission.includes(route.path) ? <NavLink to={`/${route.path}`} className="sidenav_link">
-                <i className={`fa-solid ${route.icons}`} />
-                <span>{route.title}</span>
-              </NavLink>:"" :""
+                route.sidebar ? role === "admin" ?
+                  <NavLink to={`/${route.path}`} className="sidenav_link">
+                    <i className={`fa-solid ${route.icons}`} />
+                    <span>{route.title}</span>
+                  </NavLink>
+                  :
+                  permission.includes(route.path) ? <NavLink to={`/${route.path}`} className="sidenav_link">
+                    <i className={`fa-solid ${route.icons}`} />
+                    <span>{route.title}</span>
+                  </NavLink> : "" : ""
               }
             </li>
           ))}

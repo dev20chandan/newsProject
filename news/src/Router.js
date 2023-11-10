@@ -2,33 +2,33 @@ import Dashboard from './Components/Dashboard/Dashboard';
 import AddFeed from './Components/Dashboard/Add';
 import Add from "./Components/Users/Add";
 import UserList from "./Components/Users/UserList";
+import ManageUserList from './Components/UserMangement/Listing'
 const routes = [
   {
-    title:"Feeds",
-    icons:"fa-rss",
+    title: "Feeds",
+    icons: "fa-rss",
     path: 'Feed',
     element: <Dashboard />,
     children: ['add', 'edit', 'view'],
-    sidebar:true
+    sidebar: true
   },
   {
-    title:"Users",
-    icons:"fa-user-group",
+    title: "Users",
+    icons: "fa-user-group",
     path: 'User',
     element: <UserList />,
     children: ['addAdd'],
-    sidebar:true
-
-  }, 
+    sidebar: true
+  },
   {
-    title:"Manage User",
-    icons:"fa-user-group",
+    title: "Manage User",
+    icons: "fa-user-group",
     path: 'ManageUser',
-    element: <UserList />,
+    element: <ManageUserList />,
     children: [],
-    sidebar:false
-  },   
-  
+    sidebar: true
+  },
+
 ];
 
 

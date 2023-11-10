@@ -12,7 +12,7 @@ function MyPagination({ totalItems, itemsPerPage, onPageChange }) {
   };
 
   return (
-    <nav aria-label="Page navigation">
+    <nav aria-label="Page navigation" >
       <ul className="pagination">
         <li className={`page-item ${currentPage === 1 ? 'disabled' : ''}`}>
           <a

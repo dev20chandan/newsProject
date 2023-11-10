@@ -29,7 +29,7 @@ body {
 
 /* sidbar */
 
-.logo{
+.logo {
     max-width: 200px;
     width: 100%;
 }
@@ -970,7 +970,7 @@ a.ico_box {
     border: none;
     overflow: visible;
     background-color: transparent;
-    padding-top: 80px;
+    /* padding-top: 80px; */
     width: calc(100% / 5 - 12px);
 }
 
@@ -1026,7 +1026,8 @@ a.ico_box {
 
 .card_icos {
     display: flex;
-    justify-content: space-between;
+    /* justify-content: space-between; */
+    justify-content: center;
     align-items: start;
 }
 
@@ -1041,7 +1042,7 @@ a.ico_box {
     align-items: center;
     color: var(--theme);
     font-size: 20px;
-    margin: auto;
+    margin: 5px;
 }
 
 .card_icos span {
@@ -1611,12 +1612,12 @@ i.delete {
 }
 
 .coupon_offer img {
-	position: absolute;
-	top: 10px;
-	right: 10px;
-	width: 45px;
-	aspect-ratio: 1/1;
-	border-radius: 50%;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 45px;
+    aspect-ratio: 1/1;
+    border-radius: 50%;
 }
 
 /* \ Coupon card */
@@ -1869,7 +1870,8 @@ i.delete {
 
     /* grid gallary */
     .gird_gallery .card {
-        width: calc(100% / 4 - 12px);
+        /* width: calc(100% / 4 - 12px); */
+        width: calc(100%);
     }
 
     /* grid gallary */
@@ -2152,10 +2154,12 @@ i.delete {
 
 /* Styling for the active page link */
 .active-link {
-    background-color: #007bff; /* Change this to your desired active link background color */
-    color: #fff; /* Change this to your desired active link text color */
-  }
-  
+    background-color: #007bff;
+    /* Change this to your desired active link background color */
+    color: #fff;
+    /* Change this to your desired active link text color */
+}
+
 
 
 /* \ @mq max-width */
