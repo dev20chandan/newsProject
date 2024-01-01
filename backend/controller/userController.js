@@ -3,38 +3,36 @@ import { errorResponse, successResponse } from '../helper/helper.js';
 
 export const getUser = async (req, res) => {
   try {
-    console.log('-dddddd');
     const data = await User.find();
-    successResponse(res,"welcomeMessage",data)
+    successResponse(res, "welcomeMessage", data);
   } catch (error) {
     console.log(error, '==err');
-    errorResponse((res,"error",error.message))
+    errorResponse((res, "error", error.message));
   }
 };
 
 export const createUser = async (req, res) => {
   try {
     const data = await User.findOne({ email: req.body.email });
-    if (data) return res.json({ msg: 'This email already exists' });
+    if (data) return errorResponse((res, "This email already exists", error.message));
     const userCreate = await User.create(req.body);
-    // return res.json(userCreate);
-    successResponse(res,"success",userCreate)
-
+    successResponse(res, "success", userCreate);
   } catch (error) {
     console.log(error);
-    errorResponse((res,"error",error.message))
-
+    errorResponse((res, "error", error.message));
   }
 };
 
 export const loginUsers = async (req, res) => {
   try {
     const data = await User.findOne({ email: req.body.email });
-    if (!data) return res.json({ msg: 'This email does not exist. Please sign up first' });
-    if (data.password !== req.body.password) return res.json({ msg: 'Password does not match' });
-    return res.json({ msg: 'Login success', data });
+    if (!data) {
+      return errorResponse(res, "UserNotFound", {});
+    }
+    if (data.password !== req.body.password) return errorResponse(res, "Password does not match", {});
+    successResponse(res, "LoginSuccess", data);
   } catch (error) {
     console.log(error);
-    return res.json(error.message);
+    errorResponse((res, "error", error.message));
   }
 };

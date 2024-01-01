@@ -24,6 +24,8 @@ export default function Login() {
         e.preventDefault();
         const validationResult = await validateForm(formData, schema);
         if (validationResult.isValid) {
+            console.log(formData, '===formData')
+            return
             // Form is valid, proceed with submission
             console.log('Form is valid. Submitting...');
             navigat('/feed')

@@ -1,13 +1,15 @@
 {
-    "welcomeMessage": "Welcome to our website!",
-    "aboutUs": "About Us",
-    "createSuccess":"User Create successfully",
-    "success":"Data get successfully",
-    "contactUs": "Contact Us",
-    "home": "Home",
-    "services": "Services",
-    "products": "Products",
-    "readMore": "Read More",
-    "footerText": "© 2023 Your Company. All Rights Reserved."
-  }
-  
+	"welcomeMessage": "Welcome to our website!",
+	"aboutUs": "About Us",
+	"createSuccess": "User Create successfully",
+	"LoginSuccess": "User Login successfully",
+	"success": "Data get successfully",
+	"contactUs": "Contact Us",
+	"home": "Home",
+	"services": "Services",
+	"products": "Products",
+	"readMore": "Read More",
+	"footerText": "© 2023 Your Company. All Rights Reserved.",
+	"UserNotFound": "This email does not exist. Please sign up first",
+	"Password does not match": "Password does not match"
+}
