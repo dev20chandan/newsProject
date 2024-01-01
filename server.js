@@ -43,5 +43,5 @@ connectDB()
 app.get('/*', (req, res) => {
   res.sendFile(path.join(__dirname, 'news', 'build', 'index.html'));
 });
-// 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
+// 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
 // chandan!@#123
