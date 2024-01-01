@@ -7,29 +7,33 @@ import { useNavigate } from 'react-router-dom';
 
 export default function Login() {
     const navigat = useNavigate()
+    const dispatch = useDispatch();
     const [formData, setFormData] = useState()
     const [errors, setErrors] = useState([]);
     const schema = yup.object().shape({
         email: yup.string().email('Invalid email').required('Email is required'),
-        password: yup.string().min(4, 'Password must be at least 4 characters long').required('Password is required'),
+        password: yup.string().min(3, 'Password must be at least 4 characters long').required('Password is required'),
     });
 
     const handleChange = (e) => {
         const { name, value } = e.target
         setFormData({ ...formData, [name]: value })
-        setErrors((pro)=>({...pro,[name]:""}))
+        setErrors((pro) => ({ ...pro, [name]: "" }))
     }
 
     const HandleSubmit = async (e) => {
         e.preventDefault();
         const validationResult = await validateForm(formData, schema);
         if (validationResult.isValid) {
-            console.log(formData, '===formData')
-            return
-            // Form is valid, proceed with submission
-            console.log('Form is valid. Submitting...');
-            navigat('/feed')
-            setErrors({});
+            const response = await dispatch(fetchUsers(formData));
+            if (response.code==200) {
+                navigat('/feed')
+                setErrors({}) 
+            } else {
+              alert(response.message)  
+            }
+               
+          
         } else {
             setErrors(validationResult.errors);
         }
@@ -38,6 +42,7 @@ export default function Login() {
 
     return (
         <section className="vh-100 login_page">
+   
             <div className="container py-3 h-100">
                 <div className="row d-flex justify-content-center align-items-center h-100">
                     <div className="col col-xl-10">
