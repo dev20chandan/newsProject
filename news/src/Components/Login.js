@@ -25,15 +25,12 @@ export default function Login() {
         e.preventDefault();
         const validationResult = await validateForm(formData, schema);
         if (validationResult.isValid) {
-            const response = await dispatch(fetchUsers(formData));
-            if (response.code==200) {
-                navigat('/feed')
-                setErrors({}) 
-            } else {
-              alert(response.message)  
-            }
-               
-          
+           // Form is valid, proceed with submission
+            dispatch(fetchUsers(formData))
+            // await fetchUsers(formData)
+            console.log('Form is valid. Submitting...');
+            // navigat('/feed')
+            setErrors({});
         } else {
             setErrors(validationResult.errors);
         }

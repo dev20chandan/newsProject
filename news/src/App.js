@@ -5,7 +5,7 @@ import Dashboard from './Components/Dashboard/Dashboard';
 import { routes, getRouteComponent } from './Router';
 function App() {
   const permission = ['Feed','User']
-  const role ="subadmin"
+  const role ="admin"
   return (
     <BrowserRouter>
       <Routes>

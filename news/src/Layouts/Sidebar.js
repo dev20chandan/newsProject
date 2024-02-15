@@ -3,7 +3,7 @@ import { Link, NavLink } from 'react-router-dom';
 import { routes } from '../Router';
 export default function Sidebar() {
   const permission = ['Feed', 'User']
-  const role = "subadmin"
+  const role = "admin"
 
   return (
     <>

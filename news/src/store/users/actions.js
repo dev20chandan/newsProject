@@ -11,9 +11,11 @@ export const fetchUsers = (data) => {
   return async (dispatch) => {
     try {
       dispatch(fetchUsersRequest());
-      const response = await LoginAPI(data);
+      const response = await LoginAPI();
+      console.log(response,'=======response')
       if (response.code === 200) {
-        const users = response.data;
+        console.log(response,'=======data')
+        const users = response;
         dispatch(fetchUsersSuccess(users));
         return response;
       } else {
@@ -21,10 +23,8 @@ export const fetchUsers = (data) => {
         return response;
       }
     } catch (error) {
-      // Dispatch a failure action with the error message
-      dispatch(fetchUsersFailure(error.message));
-      // Re-throw the error for the component to catch
-      throw error;
+      console.log('====err',error)
+      dispatch(fetchUsersFailure(error));
     }
   };
 };
