@@ -11,5 +11,7 @@
 	"readMore": "Read More",
 	"footerText": "© 2023 Your Company. All Rights Reserved.",
 	"UserNotFound": "This email does not exist. Please sign up first",
-	"Password does not match": "Password does not match"
+	"Password does not match": "Password does not match",
+	"payload": "payload is required",
+	"error": "error"
 }

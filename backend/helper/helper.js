@@ -6,6 +6,14 @@ export const successResponse =(res,msg,data)=>{
         body:data
     })
 }
+export const successError =(res,msg,data)=>{
+    res.json({
+        code :200,
+        status:true,
+        message:res.__(msg),
+        body:data
+    })
+}
 
 export const errorResponse =(res,msg,data)=>{
     res.json({
