@@ -4,7 +4,6 @@ import { routes } from '../Router';
 export default function Sidebar() {
   const permission = ['Feed', 'User']
   const role = "admin"
-
   return (
     <>
       <div className="sidebar_wrapper" id="sideOpen">

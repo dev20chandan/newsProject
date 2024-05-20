@@ -3,6 +3,7 @@ import AddFeed from './Components/Dashboard/Add';
 import Add from "./Components/Users/Add";
 import UserList from "./Components/Users/UserList";
 import ManageUserList from './Components/UserMangement/Listing'
+import Live from './Components/Live/Live';
 const routes = [
   {
     title: "Feeds",
@@ -25,6 +26,14 @@ const routes = [
     icons: "fa-user-group",
     path: 'ManageUser',
     element: <ManageUserList />,
+    children: [],
+    sidebar: true
+  },
+  {
+    title: "Live",
+    icons: "fa-user-group",
+    path: 'live',
+    element: <Live />,
     children: [],
     sidebar: true
   },

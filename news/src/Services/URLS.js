@@ -1,3 +1,6 @@
-export const API_URL = "https://jsdc72b5-4000.inc1.devtunnels.ms/";
+export const API_URL = "http://localhost:4000";
 
-export const Login ="api/login"
+export const Login ="api/login";
+export const GetFeed ="api/getFeed";
+
+

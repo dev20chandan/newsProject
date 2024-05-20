@@ -6,6 +6,8 @@ import commonsrc from './backend/router/common.js';
 import { fileURLToPath } from 'url';
 import { dirname } from 'path';
 import cors from 'cors';
+import morgan from 'morgan';
+
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -15,6 +17,7 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cors());
+
 
 // Serve static files from the 'news/build' directory
 app.use(express.static(path.join(__dirname, 'news', 'build')));
@@ -26,6 +29,7 @@ app.use((req, res, next) => {
   next();
 });
 app.use("/", commonsrc);
+app.use(morgan("dev"))
 
 connectDB()
   .then(() => {

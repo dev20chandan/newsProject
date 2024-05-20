@@ -1,17 +1,52 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import DeletePopup from '../../Comman/DeletePopup'
 import MyPagination from '../../Comman/MyPagination'
-import { Link, Outlet } from 'react-router-dom';
+import { Link, Outlet, useNavigate } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchFeed } from '../../store/feed/actions';
+
+
 
 export default function Dashboard() {
+    const FeedData = useSelector((state) => state.Feed.Feeds)
+    const [Feed, setFeed] = useState()
+    const navigat = useNavigate()
+    const dispatch = useDispatch();
     const [currentPage, setCurrentPage] = useState(1);
-    const itemsPerPage = 12; // Set the number of items per page
-    const totalItems = 46; // Replace with the total number of data items
+    const itemsPerPage = 12;
+    const totalItems = 46; 
 
     const handlePageChange = (newPage) => {
         setCurrentPage(newPage);
         // Fetch or update data for the new page here
     };
+
+    const fetchPaginatedData = async (pageNumber) => {
+        // setIsLoading(true); // Set loading state to true
+        // setError(null); // Clear any previous errors
+    
+        try {
+          const offset = (pageNumber - 1) * itemsPerPage;
+          const limit = itemsPerPage;
+          const response = await dispatch(fetchFeed()); 
+        //   console.log(response,'===============?????????????????')
+          setFeed(response.body); 
+        } catch (error) {
+          console.error("Error fetching feed:", error);
+        //   setError(error); // Store the error for handling
+        } finally {
+        //   setIsLoading(false); // Set loading state to false after fetching or encountering an error
+        }
+      };
+    
+      useEffect(() => {
+        fetchPaginatedData(); // Fetch data initially
+        if(FeedData.body){
+            setFeed(FeedData.body); 
+        }
+      }, [dispatch]); // Dependency array includes dispatch and currentPage
+    
+
     return (
 
         <>
@@ -23,6 +58,11 @@ export default function Dashboard() {
                             <h4 className="comp_sub_heading">
                                 Here's your ad management summary with chart view
                             </h4>
+                            <div class="d-flex justify-content-center">
+  <div class="spinner-border" role="status">
+    <span class="sr-only">Loading...</span>
+  </div>
+</div>
                         </div>
                         <div className="col-xxl-7 col-lg-8 d-flex justify-content-end gap-3 align-items-center flex-md-nowrap flex-wrap">
                             <div className="mini_search">
@@ -52,110 +92,71 @@ export default function Dashboard() {
                 <div className="container-fluid">
                     {/* {/* <div class="gird_gallery grid_list"> * /} */}
                     <div className="gird_gallery" id="gList">
-                        <div className="card">
-                            <div className="g_card">
-                                {/* <div className="card_top">
+
+
+
+                        {
+                            Feed && Feed.map((e) =>
+                                <div className="card">
+                                    <div className="g_card">
+                                        {/* <div className="card_top">
                                     <img src="./assets/images/f1.png" alt="" />
                                 </div> */}
-                                <div className="card_body">
-                                    <h4 className="card_name">संत सेवा क्या है ... ?</h4>
-                                    <p className="food_name">
-                                        संत सेवा क्या है ... ?? श्री हरिवंश गोविंदा ❤
-                                    </p>
-                                    <p className="food_name">
+                                        <div className="card_body">
+                                            <h4 className="card_name">संत सेवा क्या है ... ?</h4>
+                                            {/* <p className="food_name">
+                                                संत सेवा क्या है ... ?? श्री हरिवंश गोविंदा ❤
+                                            </p> */}
+                                            <p className="food_name">
+                                               {e.description}
+                                            </p>
 
-                                        <Link to={`https://twitter.com/IMightyWarrior/status/1718238512812892427`} >https://twitter.com/IMightyWarrior/status/1718238512812892427</Link>
-                                    </p>
+                                            <div className="card_icos">
+                                                <a
+                                                    className="text-decoration-none"
+                                                    href="javascript:void(0)"
+                                                >
+                                                    <div className="ico_s">
+                                                        {" "}
+                                                        <i className="fa-regular fa-eye" />{" "}
+                                                    </div>
+                                                    <span>View</span>
+                                                </a>
+                                                <a
+                                                    className="text-decoration-none"
+                                                    href="javascript:void(0)"
+                                                >
+                                                    <div className="ico_s red">
+                                                        {" "}
+                                                        <i className="fa-regular fa-pen-to-square" />{" "}
+                                                    </div>
+                                                    <span>Edit</span>
+                                                </a>
+                                                <a
+                                                    className="text-decoration-none"
+                                                    data-bs-toggle="modal"
+                                                    data-bs-target="#food_delete"
+                                                >
+                                                    <div className="ico_s blue">
+                                                        {" "}
+                                                        <i className="fa-regular fa-trash-can" />{" "}
+                                                    </div>
+                                                    <span>Delete</span>
+                                                </a>
 
-                                    <div className="card_icos">
-                                        <a
-                                            className="text-decoration-none"
-                                            href="javascript:void(0)"
-                                        >
-                                            <div className="ico_s">
-                                                {" "}
-                                                <i className="fa-regular fa-eye" />{" "}
                                             </div>
-                                            <span>View</span>
-                                        </a>
-                                        <a
-                                            className="text-decoration-none"
-                                            href="javascript:void(0)"
-                                        >
-                                            <div className="ico_s red">
-                                                {" "}
-                                                <i className="fa-regular fa-pen-to-square" />{" "}
-                                            </div>
-                                            <span>Edit</span>
-                                        </a>
-                                        <a
-                                            className="text-decoration-none"
-                                            data-bs-toggle="modal"
-                                            data-bs-target="#food_delete"
-                                        >
-                                            <div className="ico_s blue">
-                                                {" "}
-                                                <i className="fa-regular fa-trash-can" />{" "}
-                                            </div>
-                                            <span>Delete</span>
-                                        </a>
-
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                        </div>
-                        <div className="card">
-                            <div className="g_card">
-                                {/* <div className="card_top">
-                                    <img src="./assets/images/f1.png" alt="" />
-                                </div> */}
-                                <div className="card_body">
-                                    <h4 className="card_name">Spicy Mozarella with Barbeque</h4>
-                                    <p className="food_name">
-                                        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum
-                                    </p>
-                                    <div className="card_icos">
-                                        <a
-                                            className="text-decoration-none"
-                                            href="javascript:void(0)"
-                                        >
-                                            <div className="ico_s">
-                                                {" "}
-                                                <i className="fa-regular fa-eye" />{" "}
-                                            </div>
-                                            <span>View</span>
-                                        </a>
-                                        <a
-                                            className="text-decoration-none"
-                                            href="javascript:void(0)"
-                                        >
-                                            <div className="ico_s red">
-                                                {" "}
-                                                <i className="fa-regular fa-pen-to-square" />{" "}
-                                            </div>
-                                            <span>Edit</span>
-                                        </a>
-                                        <a
-                                            className="text-decoration-none"
-                                            data-bs-toggle="modal"
-                                            data-bs-target="#food_delete"
-                                        >
-                                            <div className="ico_s blue">
-                                                {" "}
-                                                <i className="fa-regular fa-trash-can" />{" "}
-                                            </div>
-                                            <span>Delete</span>
-                                        </a>
 
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="card">
+                            )
+                        }
+
+                        {/* <div className="card">
                             <div className="g_card">
-                                {/* <div className="card_top">
+                                <div className="card_top">
                                     <img src="./assets/images/f1.png" alt="" />
-                                </div> */}
+                                </div>
                                 <div className="card_body">
                                     <h4 className="card_name">Spicy Mozarella with Barbeque</h4>
                                     <p className="food_name">
@@ -197,7 +198,8 @@ export default function Dashboard() {
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div> */}
+                      
 
                     </div>
                     <MyPagination
