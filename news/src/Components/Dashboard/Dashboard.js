@@ -14,41 +14,30 @@ export default function Dashboard() {
     const dispatch = useDispatch();
     const [currentPage, setCurrentPage] = useState(1);
     const itemsPerPage = 12;
-    const totalItems = 46; 
+    const totalItems = 46;
 
     const handlePageChange = (newPage) => {
         setCurrentPage(newPage);
-        // Fetch or update data for the new page here
     };
 
     const fetchPaginatedData = async (pageNumber) => {
-        // setIsLoading(true); // Set loading state to true
-        // setError(null); // Clear any previous errors
-    
         try {
-          const offset = (pageNumber - 1) * itemsPerPage;
-          const limit = itemsPerPage;
-          const response = await dispatch(fetchFeed()); 
-        //   console.log(response,'===============?????????????????')
-          setFeed(response.body); 
+            const offset = (pageNumber - 1) * itemsPerPage;
+            const limit = itemsPerPage;
+            const response = await dispatch(fetchFeed());
+            setFeed(response.body);
         } catch (error) {
-          console.error("Error fetching feed:", error);
-        //   setError(error); // Store the error for handling
-        } finally {
-        //   setIsLoading(false); // Set loading state to false after fetching or encountering an error
-        }
-      };
-    
-      useEffect(() => {
-        fetchPaginatedData(); // Fetch data initially
-        if(FeedData.body){
-            setFeed(FeedData.body); 
-        }
-      }, [dispatch]); // Dependency array includes dispatch and currentPage
-    
+            console.error("Error fetching feed:", error);
+            //   setError(error); // Store the error for handling
+        } 
+    };
+
+    useEffect(() => {
+        fetchPaginatedData(); 
+    }, [dispatch]); 
+
 
     return (
-
         <>
             <section className="wrapper pb-sm-5 pb-2">
                 <div className="container-fluid">
@@ -58,11 +47,6 @@ export default function Dashboard() {
                             <h4 className="comp_sub_heading">
                                 Here's your ad management summary with chart view
                             </h4>
-                            <div class="d-flex justify-content-center">
-  <div class="spinner-border" role="status">
-    <span class="sr-only">Loading...</span>
-  </div>
-</div>
                         </div>
                         <div className="col-xxl-7 col-lg-8 d-flex justify-content-end gap-3 align-items-center flex-md-nowrap flex-wrap">
                             <div className="mini_search">
@@ -95,7 +79,11 @@ export default function Dashboard() {
 
 
 
-                        {
+                        { ! Feed ?  <div class="d-flex justify-content-center">
+                                <div class="spinner-border" role="status">
+                                    <span class="sr-only">Loading...</span>
+                                </div>
+                            </div> :
                             Feed && Feed.map((e) =>
                                 <div className="card">
                                     <div className="g_card">
@@ -108,7 +96,7 @@ export default function Dashboard() {
                                                 संत सेवा क्या है ... ?? श्री हरिवंश गोविंदा ❤
                                             </p> */}
                                             <p className="food_name">
-                                               {e.description}
+                                                {e.description}
                                             </p>
 
                                             <div className="card_icos">
@@ -199,7 +187,7 @@ export default function Dashboard() {
                                 </div>
                             </div>
                         </div> */}
-                      
+
 
                     </div>
                     <MyPagination

@@ -12,9 +12,7 @@ export const fetchFeed = (data) => {
     try {
       dispatch(fetchFeedRequest());
       const response = await GetFeed();
-      // console.log(response,'=======response')
       if (response.code === 200) {
-        // console.log(response,'=======data')
         const Feeds = response;
         dispatch(fetchFeedSuccess(Feeds));
         return response;

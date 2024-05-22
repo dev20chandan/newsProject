@@ -30,6 +30,15 @@ const routes = [
     sidebar: true
   },
   {
+    title: "User Feedback",
+    icons: "fa-user-group",
+    path: 'feedback',
+    element: <ManageUserList />,
+    children: [],
+    sidebar: true
+  },
+  
+  {
     title: "Live",
     icons: "fa-user-group",
     path: 'live',
@@ -42,7 +51,6 @@ const routes = [
 
 
 function getRouteComponent(child) {
-  // Define a function to return the appropriate component based on the child route
   switch (child) {
     case 'add':
       return <AddFeed />;

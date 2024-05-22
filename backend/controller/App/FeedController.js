@@ -17,6 +17,9 @@ export const CreateFeed = async(req, res)=>{
     try {
         console.log( req.body,'=====')
         const data = req.body
+        if(_.isEmpty(data)){
+            return  successError(res, "payload", {});
+        }
          await Models.Feeds.create(data)
         successResponse(res, "Feed Created", {}); 
     } catch (error) {
