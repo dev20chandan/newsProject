@@ -25,11 +25,14 @@ export const createUser = async (req, res) => {
 
 export const loginUsers = async (req, res) => {
   try {
+    console.log(req.body,'====req,')
     const data = await User.findOne({ email: req.body.email });
+    console.log(data,'=============data')
     if (!data) {
       return errorResponse(res, "UserNotFound", {});
     }
     if (data.password !== req.body.password) return errorResponse(res, "Password does not match", {});
+    
     successResponse(res, "LoginSuccess", data);
   } catch (error) {
     console.log(error);

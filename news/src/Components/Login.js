@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchUsers } from '../store/users/actions';
 import * as yup from 'yup';
@@ -6,40 +6,77 @@ import { validateForm } from '../Comman/helper';
 import { useNavigate } from 'react-router-dom';
 
 export default function Login() {
-    const navigat = useNavigate()
+    const navigate = useNavigate();
     const dispatch = useDispatch();
-    const [formData, setFormData] = useState()
+    const [formData, setFormData] = useState({ email: '', password: '' });
     const [errors, setErrors] = useState([]);
+    const [apiErrors, setApiErrors] = useState();
+    const [rememberMe, setRememberMe] = useState(false);
+    const incorrectAttempts = useRef(0);
+
+    useEffect(() => {
+        const storedEmail = localStorage.getItem('rememberMeEmail');
+        const storedPassword = localStorage.getItem('rememberMePassword');
+        const storedRememberMe = localStorage.getItem('rememberMe') === 'true';
+        //   console.log(storedRememberMe,'=====storedRememberMe')
+        //   console.log(storedPassword,storedEmail)
+
+        if (storedRememberMe) {
+            setFormData({
+                email: storedEmail || '',
+                password: storedPassword || '',
+            });
+            setRememberMe(storedRememberMe);
+        }
+    }, []);
+
     const schema = yup.object().shape({
         email: yup.string().email('Invalid email').required('Email is required'),
         password: yup.string().min(3, 'Password must be at least 4 characters long').required('Password is required'),
     });
 
     const handleChange = (e) => {
-        const { name, value } = e.target
-        setFormData({ ...formData, [name]: value })
-        setErrors((pro) => ({ ...pro, [name]: "" }))
-    }
+        const { name, value } = e.target;
+        setFormData({ ...formData, [name]: value });
+        setErrors((pro) => ({ ...pro, [name]: '' }));
+    };
+
+    const handleRememberMeChange = (e) => {
+        setRememberMe(e.target.checked);
+    };
 
     const HandleSubmit = async (e) => {
         e.preventDefault();
         const validationResult = await validateForm(formData, schema);
         if (validationResult.isValid) {
-           // Form is valid, proceed with submission
-            dispatch(fetchUsers(formData))
-            // await fetchUsers(formData)
+            const validData = await dispatch(fetchUsers(formData));
+            console.log(validData, '====validData')
+            if (validData.code === 400) {
+                incorrectAttempts.current += 1;
+                return setApiErrors({ msg: validData.message });
+            }
             console.log('Form is valid. Submitting...');
-            // navigat('/feed')
+            setApiErrors({});
             setErrors({});
+            if (rememberMe) {
+                localStorage.setItem('rememberMeEmail', formData.email);
+                localStorage.setItem('rememberMePassword', formData.password);
+                localStorage.setItem('rememberMe', true);
+            } else {
+                localStorage.removeItem('rememberMeEmail');
+                localStorage.removeItem('rememberMePassword');
+                localStorage.removeItem('rememberMe');
+            }
+
+            navigate('/feed');
         } else {
             setErrors(validationResult.errors);
         }
-    }
-
+    };
 
     return (
-        <section className="vh-100 login_page">
-   
+        <section className="vh-100 login_page" >
+
             <div className="container py-3 h-100">
                 <div className="row d-flex justify-content-center align-items-center h-100">
                     <div className="col col-xl-10">
@@ -67,6 +104,7 @@ export default function Login() {
                                             >
                                                 Admin Sign
                                             </h5>
+                                            {apiErrors?.msg && <span className="error-message ">{apiErrors?.msg}</span>}
                                             <div className="form-outline mb-3">
                                                 <label className="form-label" htmlFor="form2Example17">
                                                     Email address
@@ -74,6 +112,7 @@ export default function Login() {
                                                 <input
                                                     type="email"
                                                     name='email'
+                                                    value={formData.email}
                                                     className="form-control form-control-lg"
                                                     onChange={handleChange}
                                                 />
@@ -86,11 +125,18 @@ export default function Login() {
                                                 <input
                                                     type="password"
                                                     name='password'
+                                                    value={formData.password}
                                                     onChange={handleChange}
                                                     className="form-control form-control-lg"
                                                 />
                                                 {errors.password && <span className="error-message" >{errors.password}</span>}
 
+                                            </div>
+                                            <div className="form-outline mb-3">
+                                                <input type='checkbox' className="form-check-input" checked={rememberMe} onClick={handleRememberMeChange} />
+                                                <label className="form-label" htmlFor="form2Example27">
+                                                    Remember Me
+                                                </label>
                                             </div>
                                             <div className="pt-1 mb-3 w-100">
                                                 <a
@@ -105,6 +151,9 @@ export default function Login() {
                                                     {" "}
                                                     Login
                                                 </a>
+                                                {incorrectAttempts.current > 0 && (
+                                                    < span className="error-message" > Incorrect attempts: {incorrectAttempts.current}</span>
+                                                )}
                                                 {/* <button class="btn btn-dark w-100"
                   style="background-color: var(--theme); border-color: var(--theme);"  onclick="submitData()"
                  >Login</button> */}

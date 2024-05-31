@@ -12,7 +12,7 @@ export const ValidUser =(payload)=>{
 }
 
 
-const checkValidation = (validate,payload) => {
+export const checkValidation = (validate,payload) => {
     const { error, value } = validate.validate(payload);
 
     if (error) {

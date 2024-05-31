@@ -1,7 +1,8 @@
 import Models from '../../Models/index.js';
 import { ValidUser } from '../../Validations/users.js';
-import { errorResponse, successResponse, successError } from '../../helper/helper.js';
+import { generateToken, errorResponse, successResponse, successError } from '../../helper/helper.js';
 import _ from 'lodash'
+import jwt from 'jsonwebtoken'
 export const getUser = async (req, res) => {
   try {
     const data = await Models.Users.find();
@@ -18,7 +19,7 @@ export const registerUser = async (req, res) => {
     // const aavalidateUser = await ValidUser(paylaod)
     // console.log(aavalidateUser,'======valid user')
     if (_.isEmpty(paylaod)) {
-     return successError(res, "payload", {});
+      return successError(res, "payload", {});
     }
     const data = await Models.Users.findOne({ email: req.body.email });
     if (data) return errorResponse((res, "This email already exists", error.message));
@@ -32,12 +33,25 @@ export const registerUser = async (req, res) => {
 
 export const loginUsers = async (req, res) => {
   try {
-    const data = await Models.Users.findOne({ email: req.body.email });
-    
+    let data = await Models.Users.findOne({ email: req.body.email });
     if (!data) {
       return successError(res, "UserNotFound", {});
     }
+
     if (data.password !== req.body.password) return errorResponse(res, "Password does not match", {});
+    let tokenData = {
+      id: data._id,
+      email: data.email,
+      role: data.role,
+      createdAt: data.createdAt,
+      updatedAt: data.updatedAt,
+    };
+
+    const accessToken = generateToken(tokenData, process.env.SECRET_KEY);
+    const refreshToken = generateToken({ id: data._id }, process.env.SECRET_KEY);
+    data = data.toJSON()
+    data.accessToken = accessToken;
+    data.refreshToken = refreshToken;
     successResponse(res, "LoginSuccess", data);
   } catch (error) {
     console.log(error);

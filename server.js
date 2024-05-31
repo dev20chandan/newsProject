@@ -7,6 +7,7 @@ import { fileURLToPath } from 'url';
 import { dirname } from 'path';
 import cors from 'cors';
 import morgan from 'morgan';
+import 'dotenv/config'
 
 
 const __filename = fileURLToPath(import.meta.url);

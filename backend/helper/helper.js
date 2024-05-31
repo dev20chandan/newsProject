@@ -1,3 +1,4 @@
+import jwt from 'jsonwebtoken';
 export const successResponse =(res,msg,data)=>{
     res.json({
         code :200,
@@ -24,6 +25,11 @@ export const errorResponse =(res,msg,data)=>{
     })
 }
 
+
+
+export const generateToken=(tokenData,secretKey ,time =60*60)=>{
+    return jwt.sign({ tokenData }, secretKey,{ expiresIn: time });
+}
 
 
 
