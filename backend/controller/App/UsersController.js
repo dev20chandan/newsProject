@@ -16,12 +16,11 @@ export const getUser = async (req, res) => {
 export const registerUser = async (req, res) => {
   try {
     const paylaod = req.body
-    // const aavalidateUser = await ValidUser(paylaod)
-    // console.log(aavalidateUser,'======valid user')
     if (_.isEmpty(paylaod)) {
       return successError(res, "payload", {});
     }
     const data = await Models.Users.findOne({ email: req.body.email });
+
     if (data) return errorResponse((res, "This email already exists", error.message));
     const userCreate = await Models.Users.create(req.body);
     successResponse(res, "success", userCreate);
@@ -34,6 +33,7 @@ export const registerUser = async (req, res) => {
 export const loginUsers = async (req, res) => {
   try {
     let data = await Models.Users.findOne({ email: req.body.email });
+    console.log(data,'============data')
     if (!data) {
       return successError(res, "UserNotFound", {});
     }

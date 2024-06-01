@@ -51,7 +51,8 @@ export default function Login() {
         if (validationResult.isValid) {
             const validData = await dispatch(fetchUsers(formData));
             console.log(validData, '====validData')
-            if (validData.code === 400) {
+            
+            if ((validData.code === 400)||(validData.code === 404) ) {
                 incorrectAttempts.current += 1;
                 return setApiErrors({ msg: validData.message });
             }

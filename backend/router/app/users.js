@@ -4,7 +4,7 @@ import {authenticateToken} from '../../helper/AuthToken.js'
 
 const router = express.Router();
 
-router.get('/getUser', getUser);
+router.get('/getUser', authenticateToken,getUser);
 router.post('/register',registerUser)
 router.post('/loginUser',loginUsers)
 

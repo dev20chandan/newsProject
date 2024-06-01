@@ -9,12 +9,14 @@ export const successResponse =(res,msg,data)=>{
 }
 export const successError =(res,msg,data)=>{
     res.json({
-        code :200,
-        status:true,
+        code :404,
+        status:false,
         message:res.__(msg),
         body:data
     })
 }
+
+
 
 export const errorResponse =(res,msg,data)=>{
     res.json({
