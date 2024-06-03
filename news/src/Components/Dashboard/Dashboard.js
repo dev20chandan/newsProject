@@ -6,9 +6,9 @@ import { useDispatch, useSelector } from 'react-redux';
 import { fetchFeed } from '../../store/feed/actions';
 
 
-
 export default function Dashboard() {
-    const FeedData = useSelector((state) => state.Feed.Feeds)
+    const FeedData = useSelector((state) => state)
+    console.log(FeedData,'====FeedData')
     const [Feed, setFeed] = useState()
     const navigat = useNavigate()
     const dispatch = useDispatch();

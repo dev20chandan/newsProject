@@ -1,10 +1,21 @@
-import  {configureStore} from '@reduxjs/toolkit'
-import getUserDetails from '../features/authSlice'
+import { configureStore } from '@reduxjs/toolkit';
+import { persistStore, persistReducer } from 'redux-persist';
+import storage from 'redux-persist/lib/storage';
+import getUserDetails from '../features/authSlice';
 
- const store =configureStore({
-    reducer:{
-        getUserDetails:getUserDetails
-    }
-})
+const persistConfig = {
+  key: 'root',
+  storage,
+};
 
-export default store;
+const persistedReducer = persistReducer(persistConfig, getUserDetails);
+
+const store = configureStore({
+  reducer: {
+    getUserDetails: persistedReducer,
+  },
+});
+
+const persistor = persistStore(store);
+
+export  { store, persistor };

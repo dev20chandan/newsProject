@@ -8,9 +8,6 @@ import { loginUser } from '../features/authSlice';
 
 export default function Login() {
     const data = useSelector((state)=>state.getUserDetails)
-    console.log(data,'====data')
-    // const [userData , setuserData] = useState(data)
-    // console.log(userData,'===ssss======data')
     const navigate = useNavigate();
     const dispatch = useDispatch();
     const [formData, setFormData] = useState({ email: '', password: '' });
@@ -56,12 +53,11 @@ export default function Login() {
         const validationResult = await validateForm(formData, schema);
         if (validationResult.isValid) {
             const validData = await dispatch(loginUser(formData));
-            return
-            console.log(validData, '====validData')
-            
-            if ((validData.code === 400)||(validData.code === 404) ) {
+            console.log(validData,'======here')
+                    
+            if ((validData.payload.code === 400)||(validData.payload.code === 404) ) {
                 incorrectAttempts.current += 1;
-                return setApiErrors({ msg: validData.message });
+                return setApiErrors({ msg: validData.payload.message });
             }
             console.log('Form is valid. Submitting...');
             setApiErrors({});
@@ -76,7 +72,7 @@ export default function Login() {
                 localStorage.removeItem('rememberMe');
             }
 
-            navigate('/feed');
+            navigate('/home');
         } else {
             setErrors(validationResult.errors);
         }

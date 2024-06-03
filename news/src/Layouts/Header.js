@@ -1,6 +1,8 @@
 import React from 'react'
+import { useSelector } from 'react-redux';
 
 export default function Header() {
+const  data = useSelector((state)=>state?.getUserDetails.user)
 
   return (
    <>
@@ -54,7 +56,7 @@ export default function Header() {
           />
           <a   href="javascript:void(0)" className="nav_user me-auto">
             <h6>
-              Hello, <strong>Samantha</strong>
+              Hello, <strong>{data?.body?.firstName}</strong>
             </h6>
             <div className="nav_user_img">
               <img src="/assets/images/user.png" alt="" />
