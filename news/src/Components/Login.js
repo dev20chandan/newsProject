@@ -4,8 +4,13 @@ import { fetchUsers } from '../store/users/actions';
 import * as yup from 'yup';
 import { validateForm } from '../Comman/helper';
 import { useNavigate } from 'react-router-dom';
+import { loginUser } from '../features/authSlice';
 
 export default function Login() {
+    const data = useSelector((state)=>state.getUserDetails)
+    console.log(data,'====data')
+    // const [userData , setuserData] = useState(data)
+    // console.log(userData,'===ssss======data')
     const navigate = useNavigate();
     const dispatch = useDispatch();
     const [formData, setFormData] = useState({ email: '', password: '' });
@@ -15,6 +20,7 @@ export default function Login() {
     const incorrectAttempts = useRef(0);
 
     useEffect(() => {
+
         const storedEmail = localStorage.getItem('rememberMeEmail');
         const storedPassword = localStorage.getItem('rememberMePassword');
         const storedRememberMe = localStorage.getItem('rememberMe') === 'true';
@@ -28,7 +34,7 @@ export default function Login() {
             });
             setRememberMe(storedRememberMe);
         }
-    }, []);
+    }, [data]);
 
     const schema = yup.object().shape({
         email: yup.string().email('Invalid email').required('Email is required'),
@@ -49,7 +55,8 @@ export default function Login() {
         e.preventDefault();
         const validationResult = await validateForm(formData, schema);
         if (validationResult.isValid) {
-            const validData = await dispatch(fetchUsers(formData));
+            const validData = await dispatch(loginUser(formData));
+            return
             console.log(validData, '====validData')
             
             if ((validData.code === 400)||(validData.code === 404) ) {
