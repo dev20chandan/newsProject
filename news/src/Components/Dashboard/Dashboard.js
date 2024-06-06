@@ -4,14 +4,13 @@ import MyPagination from '../../Comman/MyPagination'
 import { Link, Outlet, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchFeed } from '../../store/feed/actions';
+import { getFeedResponse } from '../../features/Feed/feedSlice';
 
 
 export default function Dashboard() {
-    const FeedData = useSelector((state) => state)
-    console.log(FeedData,'====FeedData')
-    const [Feed, setFeed] = useState()
     const navigat = useNavigate()
     const dispatch = useDispatch();
+    const { feed, loading, error } = useSelector((state) => state.getFeedResponse)
     const [currentPage, setCurrentPage] = useState(1);
     const itemsPerPage = 12;
     const totalItems = 46;
@@ -22,19 +21,16 @@ export default function Dashboard() {
 
     const fetchPaginatedData = async (pageNumber) => {
         try {
-            const offset = (pageNumber - 1) * itemsPerPage;
-            const limit = itemsPerPage;
-            const response = await dispatch(fetchFeed());
-            setFeed(response.body);
+            dispatch(getFeedResponse())
         } catch (error) {
             console.error("Error fetching feed:", error);
             //   setError(error); // Store the error for handling
-        } 
+        }
     };
 
     useEffect(() => {
-        fetchPaginatedData(); 
-    }, [dispatch]); 
+        fetchPaginatedData();
+    }, [dispatch]);
 
 
     return (
@@ -59,14 +55,10 @@ export default function Dashboard() {
                                     <i className="fa-solid fa-magnifying-glass sera_ico" />
                                 </div>
                             </div>
-
-
                             <Link to='/Feed/add' className="ico_box active " >
                                 {" "}
                                 <i className="fa-solid fa-plus" />{" "}
                             </Link>
-
-
                             <foodadd></foodadd>
                         </div>
                     </div>
@@ -77,14 +69,12 @@ export default function Dashboard() {
                     {/* {/* <div class="gird_gallery grid_list"> * /} */}
                     <div className="gird_gallery" id="gList">
 
-
-
-                        { ! Feed ?  <div class="d-flex justify-content-center">
-                                <div class="spinner-border" role="status">
-                                    <span class="sr-only">Loading...</span>
-                                </div>
-                            </div> :
-                            Feed && Feed.map((e) =>
+                        {loading ? <div class="d-flex justify-content-center">
+                            <div class="spinner-border" role="status">
+                                <span class="sr-only">Loading...</span>
+                            </div>
+                        </div> :
+                            feed && feed?.body && feed?.body.map((e) =>
                                 <div className="card">
                                     <div className="g_card">
                                         {/* <div className="card_top">

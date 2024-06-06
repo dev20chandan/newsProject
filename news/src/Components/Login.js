@@ -53,13 +53,15 @@ export default function Login() {
         const validationResult = await validateForm(formData, schema);
         if (validationResult.isValid) {
             const validData = await dispatch(loginUser(formData));
-            console.log(validData,'======here')
+    
                     
-            if ((validData.payload.code === 400)||(validData.payload.code === 404) ) {
+            if ((validData.payload.code === 400)||(validData.payload.code === 404)||(validData.meta.rejectedWithValue==true) ) {
+                console.log('=hereeeee')
                 incorrectAttempts.current += 1;
-                return setApiErrors({ msg: validData.payload.message });
-            }
-            console.log('Form is valid. Submitting...');
+                let msg = validData.meta.rejectedWithValue ? validData.payload :validData.payload.message
+                return setApiErrors({ msg: msg });
+            }else{
+                console.log('Form is valid. Submitting...');
             setApiErrors({});
             setErrors({});
             if (rememberMe) {
@@ -71,8 +73,10 @@ export default function Login() {
                 localStorage.removeItem('rememberMePassword');
                 localStorage.removeItem('rememberMe');
             }
-
-            navigate('/home');
+            navigate('/Feed');
+            }
+            
+           
         } else {
             setErrors(validationResult.errors);
         }

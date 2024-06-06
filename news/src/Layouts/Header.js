@@ -1,11 +1,16 @@
 import React from 'react'
 import { useSelector } from 'react-redux';
+import  {Toaster} from 'react-hot-toast'
 
 export default function Header() {
 const  data = useSelector((state)=>state?.getUserDetails.user)
 
   return (
    <>
+   <Toaster 
+    position="top-right"
+    reverseOrder={false}
+   />
    <nav className="navbar navbar-expand-xl">
         <div className="container-fluid">
           <div
