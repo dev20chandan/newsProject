@@ -15,5 +15,8 @@
 	"payload": "payload is required",
 	"error": "error",
 	"GetFeed":"Get Feed Success",
-	"Feed Created":"Feed Created Success"
+	"Feed Created":"Feed Created Success",
+	"Feed Updated":"Feed Updated successfully",
+	"Feed Deleted":"Feed Deleted successfully"
+
 }

@@ -5,9 +5,9 @@ import * as yup from 'yup';
 import { validateForm } from '../Comman/helper';
 import { useNavigate } from 'react-router-dom';
 import { loginUser } from '../features/authSlice';
+import _ from 'lodash'
 
 export default function Login() {
-    const data = useSelector((state)=>state.getUserDetails)
     const navigate = useNavigate();
     const dispatch = useDispatch();
     const [formData, setFormData] = useState({ email: '', password: '' });
@@ -15,15 +15,19 @@ export default function Login() {
     const [apiErrors, setApiErrors] = useState();
     const [rememberMe, setRememberMe] = useState(false);
     const incorrectAttempts = useRef(0);
+    const { user } = useSelector((state) => state?.getUserDetails)
+
+    useEffect(() => {
+        if (!_.isEmpty(user)) {
+            navigate('/Feed')
+        }
+    }, [])
 
     useEffect(() => {
 
         const storedEmail = localStorage.getItem('rememberMeEmail');
         const storedPassword = localStorage.getItem('rememberMePassword');
         const storedRememberMe = localStorage.getItem('rememberMe') === 'true';
-        //   console.log(storedRememberMe,'=====storedRememberMe')
-        //   console.log(storedPassword,storedEmail)
-
         if (storedRememberMe) {
             setFormData({
                 email: storedEmail || '',
@@ -31,7 +35,7 @@ export default function Login() {
             });
             setRememberMe(storedRememberMe);
         }
-    }, [data]);
+    }, []);
 
     const schema = yup.object().shape({
         email: yup.string().email('Invalid email').required('Email is required'),
@@ -47,36 +51,30 @@ export default function Login() {
     const handleRememberMeChange = (e) => {
         setRememberMe(e.target.checked);
     };
-
     const HandleSubmit = async (e) => {
         e.preventDefault();
         const validationResult = await validateForm(formData, schema);
         if (validationResult.isValid) {
             const validData = await dispatch(loginUser(formData));
-    
-                    
-            if ((validData.payload.code === 400)||(validData.payload.code === 404)||(validData.meta.rejectedWithValue==true) ) {
-                console.log('=hereeeee')
+            if ((validData.payload.code === 400) || (validData.payload.code === 404) || (validData.meta.rejectedWithValue == true)) {
                 incorrectAttempts.current += 1;
-                let msg = validData.meta.rejectedWithValue ? validData.payload :validData.payload.message
+                let msg = validData.meta.rejectedWithValue ? validData.payload : validData.payload.message
                 return setApiErrors({ msg: msg });
-            }else{
-                console.log('Form is valid. Submitting...');
-            setApiErrors({});
-            setErrors({});
-            if (rememberMe) {
-                localStorage.setItem('rememberMeEmail', formData.email);
-                localStorage.setItem('rememberMePassword', formData.password);
-                localStorage.setItem('rememberMe', true);
             } else {
-                localStorage.removeItem('rememberMeEmail');
-                localStorage.removeItem('rememberMePassword');
-                localStorage.removeItem('rememberMe');
+                console.log('Form is valid. Submitting...');
+                setApiErrors({});
+                setErrors({});
+                if (rememberMe) {
+                    localStorage.setItem('rememberMeEmail', formData.email);
+                    localStorage.setItem('rememberMePassword', formData.password);
+                    localStorage.setItem('rememberMe', true);
+                } else {
+                    localStorage.removeItem('rememberMeEmail');
+                    localStorage.removeItem('rememberMePassword');
+                    localStorage.removeItem('rememberMe');
+                }
+                navigate('/Feed');
             }
-            navigate('/Feed');
-            }
-            
-           
         } else {
             setErrors(validationResult.errors);
         }

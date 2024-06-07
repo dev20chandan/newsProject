@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import DeletePopup from '../../Comman/DeletePopup'
 import MyPagination from '../../Comman/MyPagination'
-import { Link, Outlet, useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchFeed } from '../../store/feed/actions';
 import { getFeedResponse } from '../../features/Feed/feedSlice';
 
 
@@ -74,7 +73,7 @@ export default function Dashboard() {
                                 <span class="sr-only">Loading...</span>
                             </div>
                         </div> :
-                            feed && feed?.body && feed?.body.map((e) =>
+                            feed && feed?.body && feed?.body?.data.map((e) =>
                                 <div className="card">
                                     <div className="g_card">
                                         {/* <div className="card_top">

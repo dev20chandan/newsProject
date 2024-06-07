@@ -1,17 +1,25 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useSelector } from 'react-redux';
-import  {Toaster} from 'react-hot-toast'
+import { Toaster } from 'react-hot-toast'
+import _ from 'lodash'
+import { useNavigate } from 'react-router-dom';
 
 export default function Header() {
-const  data = useSelector((state)=>state?.getUserDetails.user)
+  const navigate = useNavigate()
+  const { user } = useSelector((state) => state?.getUserDetails)
+  useEffect(() => {
+    if (_.isEmpty(user)) {
+      navigate('/')
+    }
+  }, [])
 
   return (
-   <>
-   <Toaster 
-    position="top-right"
-    reverseOrder={false}
-   />
-   <nav className="navbar navbar-expand-xl">
+    <>
+      <Toaster
+        position="top-right"
+        reverseOrder={false}
+      />
+      <nav className="navbar navbar-expand-xl">
         <div className="container-fluid">
           <div
             className="collapse navbar-collapse w-100"
@@ -26,17 +34,17 @@ const  data = useSelector((state)=>state?.getUserDetails.user)
                 />
                 <i className="fa-solid fa-magnifying-glass" />
               </div>
-              <a   href="javascript:void(0)" className="nt_box">
+              <a href="javascript:void(0)" className="nt_box">
                 <i className="fa-regular fa-bell" />
                 <span className="num_cir">20</span>
               </a>
-              <a   href="javascript:void(0)" className="nt_box">
+              <a href="javascript:void(0)" className="nt_box">
                 <i className="fa-regular fa-comment-dots" />
                 <span className="num_cir">15</span>
               </a>
-             
+
               <a
-                  href="javascript:void(0)"
+                href="javascript:void(0)"
                 className="nt_box"
                 style={{ backgroundColor: "rgba(255, 91, 91, 0.15)" }}
               >
@@ -59,9 +67,9 @@ const  data = useSelector((state)=>state?.getUserDetails.user)
             aria-expanded="false"
             aria-label="Toggle navigation"
           />
-          <a   href="javascript:void(0)" className="nav_user me-auto">
+          <a href="javascript:void(0)" className="nav_user me-auto">
             <h6>
-              Hello, <strong>{data?.body?.firstName}</strong>
+              Hello, <strong>{user?.body?.firstName}</strong>
             </h6>
             <div className="nav_user_img">
               <img src="/assets/images/user.png" alt="" />
@@ -73,6 +81,6 @@ const  data = useSelector((state)=>state?.getUserDetails.user)
           />
         </div>
       </nav>
-   </>
+    </>
   )
 }

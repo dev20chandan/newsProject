@@ -1,14 +1,15 @@
 import React, { useState } from 'react'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { addFeed } from '../../features/Feed/feedSlice'
 import { toast } from 'react-hot-toast'
 import { useNavigate } from 'react-router-dom'
 
 
 export default function Add() {
+  const {user, loading , error} = useSelector((state)=>state.getUserDetails)
   const dispatch = useDispatch()
   const navigate = useNavigate()
-  const [formData, setformData] = useState({})
+  const [formData, setformData] = useState({userId:user.body._id})
   const handleChange = (e) => {
     const { name, value } = e.target
     setformData({ ...formData, [name]: value })
