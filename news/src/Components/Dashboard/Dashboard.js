@@ -11,16 +11,18 @@ export default function Dashboard() {
     const dispatch = useDispatch();
     const { feed, loading, error } = useSelector((state) => state.getFeedResponse)
     const [currentPage, setCurrentPage] = useState(1);
-    const itemsPerPage = 12;
-    const totalItems = 46;
+    const itemsPerPage = 10;
+    const totalItems = feed.body.total || 10;
 
     const handlePageChange = (newPage) => {
+        // console.log(newPage,'=========================newpage')
         setCurrentPage(newPage);
+        fetchPaginatedData(newPage);
     };
 
-    const fetchPaginatedData = async (pageNumber) => {
+    const fetchPaginatedData = async (currentPage) => {
         try {
-            dispatch(getFeedResponse())
+            dispatch(getFeedResponse(currentPage))
         } catch (error) {
             console.error("Error fetching feed:", error);
             //   setError(error); // Store the error for handling
@@ -28,7 +30,7 @@ export default function Dashboard() {
     };
 
     useEffect(() => {
-        fetchPaginatedData();
+        fetchPaginatedData(currentPage);
     }, [dispatch]);
 
 

@@ -7,6 +7,7 @@ import _ from 'lodash'
 export const getFeed = async (req, res) => {
     try {
         const { page = 1, limit = 10, search = '', filter = '',sortBy = 'createdAt', sortOrder = 'desc' } = req.query;
+        console.log(page,'====================page')
         // Construct the query object
         let query = { isDeleted: false };
 

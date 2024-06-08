@@ -17,9 +17,9 @@ export const addFeed = createAsyncThunk('addFeed',async (data,{rejectWithValue} 
     }
 })
 
-export const getFeedResponse = createAsyncThunk("getFeed",async(rejectWithValue)=>{
+export const getFeedResponse = createAsyncThunk("getFeed",async(currentPages,{rejectWithValue})=>{
     try {
-        const response = await GetFeed()
+        const response = await GetFeed(currentPages)
         if (!response.status) {
             return rejectWithValue(response.message);
           }

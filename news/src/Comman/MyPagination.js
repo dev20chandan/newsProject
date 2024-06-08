@@ -6,9 +6,9 @@ function MyPagination({ totalItems, itemsPerPage, onPageChange }) {
 
   const handlePageChange = (newPage) => {
     setCurrentPage(newPage);
-    if (onPageChange) {
+    // if (onPageChange) {
       onPageChange(newPage);
-    }
+    // }
   };
 
   return (
