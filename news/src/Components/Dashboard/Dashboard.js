@@ -12,7 +12,7 @@ export default function Dashboard() {
     const { feed, loading, error } = useSelector((state) => state.getFeedResponse)
     const [currentPage, setCurrentPage] = useState(1);
     const itemsPerPage = 10;
-    const totalItems = feed.body.total || 10;
+    const totalItems = feed?.body?.total || 10;
 
     const handlePageChange = (newPage) => {
         // console.log(newPage,'=========================newpage')
