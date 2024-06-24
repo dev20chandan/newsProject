@@ -65,127 +65,116 @@ export default function Dashboard() {
                     </div>
                 </div>
             </section>
-            <section className="wrpper">
+            <section className="wrapper">
                 <div className="container-fluid">
-                    {/* {/* <div class="gird_gallery grid_list"> * /} */}
-                    <div className="gird_gallery" id="gList">
-
-                        {loading ? <div class="d-flex justify-content-center">
-                            <div class="spinner-border" role="status">
-                                <span class="sr-only">Loading...</span>
-                            </div>
-                        </div> :
-                            feed && feed?.body && feed?.body?.data.map((e) =>
-                                <div className="card">
-                                    <div className="g_card">
-                                        {/* <div className="card_top">
-                                    <img src="./assets/images/f1.png" alt="" />
-                                </div> */}
-                                        <div className="card_body">
-                                            <h4 className="card_name">संत सेवा क्या है ... ?</h4>
-                                            {/* <p className="food_name">
-                                                संत सेवा क्या है ... ?? श्री हरिवंश गोविंदा ❤
-                                            </p> */}
-                                            <p className="food_name">
-                                                {e.description}
-                                            </p>
-
-                                            <div className="card_icos">
-                                                <a
-                                                    className="text-decoration-none"
-                                                    href="javascript:void(0)"
-                                                >
-                                                    <div className="ico_s">
-                                                        {" "}
-                                                        <i className="fa-regular fa-eye" />{" "}
-                                                    </div>
-                                                    <span>View</span>
-                                                </a>
-                                                <a
-                                                    className="text-decoration-none"
-                                                    href="javascript:void(0)"
-                                                >
-                                                    <div className="ico_s red">
-                                                        {" "}
-                                                        <i className="fa-regular fa-pen-to-square" />{" "}
-                                                    </div>
-                                                    <span>Edit</span>
-                                                </a>
-                                                <a
-                                                    className="text-decoration-none"
-                                                    data-bs-toggle="modal"
-                                                    data-bs-target="#food_delete"
-                                                >
-                                                    <div className="ico_s blue">
-                                                        {" "}
-                                                        <i className="fa-regular fa-trash-can" />{" "}
-                                                    </div>
-                                                    <span>Delete</span>
-                                                </a>
-
-                                            </div>
+                    <div className="responsive-table">
+                        <table className="admin_table table">
+                            <thead className="table_header">
+                                <tr>
+                                    <th>Sl No</th>
+                                    <th>
+                                        <div className="d-flex align-items-end justify-content-start">
+                                            Title
+                                            <span className="d-inline-flex flex-column up_down_icon">
+                                                <i className="fa-solid fa-caret-up" />
+                                                <i className="fa-solid fa-caret-down" />
+                                            </span>
                                         </div>
-                                    </div>
-                                </div>
+                                    </th>
+                                    <th>
+                                        <div className="d-flex align-items-end justify-content-start">
+                                            Description
+                                            <span className="d-inline-flex flex-column up_down_icon">
+                                                <i className="fa-solid fa-caret-up" />
+                                                <i className="fa-solid fa-caret-down" />
+                                            </span>
+                                        </div>
+                                    </th>
 
-                            )
-                        }
+                                    <th>
+                                        <div className="d-flex align-items-end justify-content-start">
+                                            Status
+                                            <span className="d-inline-flex flex-column up_down_icon">
+                                                <i className="fa-solid fa-caret-up" />
+                                                <i className="fa-solid fa-caret-down" />
+                                            </span>
+                                        </div>
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody className="table_body">
+                                {
+                                    loading ? <div class="d-flex justify-content-center">
+                                        <div class="spinner-border" role="status">
+                                            <span class="sr-only">Loading...</span>
+                                        </div>
+                                    </div> :
+                                        feed && feed?.body && feed?.body?.data.map((e, i) =>
+                                            <>
+                                                <tr key={i}>
+                                                    <td data-label="Customer ID">#{i+1}</td>
+                                                    <td data-label="Restaurant name">{e?.title}</td>
+                                                    <td data-label="Customer Name">{e?.description}</td>
+                                                    <td data-label="Membership">
+                                                        {i % 2 == 0 ? <a href="javascript:void(0)" className="t_btn">
+                                                            Rejected
+                                                        </a> : <a href="javascript:void(0)" className="t_btn acc">
+                                                            Approved
+                                                        </a>}
+                                                        <div className="btn-group t_dropdown">
+                                                            <i
+                                                                className="fa-solid fa-ellipsis"
+                                                                data-bs-toggle="dropdown"
+                                                                aria-expanded="false"
+                                                            />
+                                                            <ul className="dropdown-menu dropdown-menu-end">
+                                                                <li>
+                                                                    <a href="customer-id.html" className="dropdown-item">
+                                                                        View Detail
+                                                                    </a>
+                                                                </li>
+                                                                <li>
+                                                                    <a
+                                                                        href="manager-edit.html"
+                                                                        className="dropdown-item"
+                                                                        type="button"
+                                                                    >
+                                                                        Edit
+                                                                    </a>
+                                                                </li>
+                                                                <li>
+                                                                    <button
+                                                                        className="dropdown-item"
+                                                                        data-bs-toggle="modal"
+                                                                        data-bs-target="#manager-delete"
+                                                                        type="button"
+                                                                    >
+                                                                        Delete
+                                                                    </button>
+                                                                </li>
+                                                            </ul>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            </>
 
-                        {/* <div className="card">
-                            <div className="g_card">
-                                <div className="card_top">
-                                    <img src="./assets/images/f1.png" alt="" />
-                                </div>
-                                <div className="card_body">
-                                    <h4 className="card_name">Spicy Mozarella with Barbeque</h4>
-                                    <p className="food_name">
-                                        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum
-                                    </p>
-                                    <div className="card_icos">
-                                        <a
-                                            className="text-decoration-none"
-                                            href="javascript:void(0)"
-                                        >
-                                            <div className="ico_s">
-                                                {" "}
-                                                <i className="fa-regular fa-eye" />{" "}
-                                            </div>
-                                            <span>View</span>
-                                        </a>
-                                        <a
-                                            className="text-decoration-none"
-                                            href="javascript:void(0)"
-                                        >
-                                            <div className="ico_s red">
-                                                {" "}
-                                                <i className="fa-regular fa-pen-to-square" />{" "}
-                                            </div>
-                                            <span>Edit</span>
-                                        </a>
-                                        <a
-                                            className="text-decoration-none"
-                                            data-bs-toggle="modal"
-                                            data-bs-target="#food_delete"
-                                        >
-                                            <div className="ico_s blue">
-                                                {" "}
-                                                <i className="fa-regular fa-trash-can" />{" "}
-                                            </div>
-                                            <span>Delete</span>
-                                        </a>
+                                        )}
 
-                                    </div>
+                            </tbody>
+                        </table>
+                        <div className="table_footer">
+                            <div className="row align-items-center g-3">
+                                <div className="col-md-6 text-md-start text-center">
+                                    <p>Showing {itemsPerPage} from {totalItems} data</p>
                                 </div>
+                                <MyPagination
+                                    totalItems={totalItems}
+                                    itemsPerPage={itemsPerPage}
+                                    onPageChange={handlePageChange}
+                                />
                             </div>
-                        </div> */}
-
-
+                        </div>
                     </div>
-                    <MyPagination
-                        totalItems={totalItems}
-                        itemsPerPage={itemsPerPage}
-                        onPageChange={handlePageChange}
-                    />
                 </div>
             </section>
             <DeletePopup />

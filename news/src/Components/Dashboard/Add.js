@@ -18,9 +18,13 @@ export default function Add() {
   const handleSubmit = async (e) => {
     try {
       e.preventDefault()
+
+      console.log(formData,'============form data')
+      return 
       const response = await dispatch(addFeed(formData))
       if ((response.payload.code === 400) || (response.payload.code === 404) || (response.meta.rejectedWithValue == true)) {
         let msg = response.meta.rejectedWithValue ? response.payload : response.payload.message
+
         console.log(msg, '=====msg')
         toast.error("Somthing Went wrong")
       } else {
