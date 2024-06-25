@@ -1,13 +1,12 @@
 import React, { useState, useEffect } from 'react'
 import DeletePopup from '../../Comman/DeletePopup'
 import MyPagination from '../../Comman/MyPagination'
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { getFeedResponse } from '../../features/Feed/feedSlice';
 
 
 export default function Dashboard() {
-    const navigat = useNavigate()
     const dispatch = useDispatch();
     const { feed, loading, error } = useSelector((state) => state.getFeedResponse)
     const [currentPage, setCurrentPage] = useState(1);
