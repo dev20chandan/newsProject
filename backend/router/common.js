@@ -2,12 +2,14 @@ import express from 'express';
 import api from './api.js';
 import Users from './app/users.js'
 import Feeds from "./app/feed.js"
+import Payments from './app/payments.js'
 
 const router = express.Router();
 
 router.use('/api', api);
 router.use('/api/',Users)
 router.use('/api/',Feeds)
+router.use('/api',Payments)
 
 export default router;
 
