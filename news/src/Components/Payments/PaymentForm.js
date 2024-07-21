@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import "./Payment.css"
 // import logoimg from '../../../public/image.png'
+import { API_URL } from '../../Services/URLS';
 
 const PaymentForm = () => {
 
@@ -21,7 +22,7 @@ const PaymentForm = () => {
     if (!amount) return alert("Please selet amount")
     console.log(formData, "sdkajskdjformData")
 
-    const response = await fetch("http://localhost:4000/api/order", {
+    const response = await fetch(`${API_URL}/api/order`, {
       method: "POST",
       body: JSON.stringify({
         ...formData
@@ -93,7 +94,7 @@ const PaymentForm = () => {
         };
 
         const validateRes = await fetch(
-          "http://localhost:4000/api/validate",
+          `${API_URL}/api/validate`,
           {
             method: "POST",
             body: JSON.stringify(body),
@@ -104,6 +105,7 @@ const PaymentForm = () => {
         );
         const jsonRes = await validateRes.json();
         console.log(jsonRes, '====hereee');
+        alert("Payment success")
 
       },
       "prefill": { //We recommend using the prefill parameter to auto-fill customer's contact information, especially their phone number
