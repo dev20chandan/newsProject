@@ -3,12 +3,14 @@ import Login from './Components/Login';
 import MainLayout from './Layouts/MainLayout';
 import Dashboard from './Components/Dashboard/Dashboard';
 import { routes, getRouteComponent } from './Router';
+import PaymentForm from "./Components/Payments/PaymentForm";
 function App() {
   const permission = ['Feed','User','live']
   const role ="admin"
   return (
     <BrowserRouter>
       <Routes>
+      <Route path="/payment" element={<PaymentForm />} />
         <Route path="/" element={<Login />} />
         <Route path="/" element={<MainLayout />}>
           {routes.map((route) => (
